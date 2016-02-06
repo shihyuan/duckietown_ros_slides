@@ -1,0 +1,9 @@
+_minted-duckietown_ros/
+*.aux
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.log
+duckietown_ros.pdf

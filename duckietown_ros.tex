@@ -1,0 +1,70 @@
+\documentclass{beamer}
+\usepackage{multimedia}
+%===Pick Theme===
+\usetheme{Warsaw}
+\usecolortheme{beaver}
+\useoutertheme{infolines}
+\useinnertheme{circles}
+
+%===Customize Theme=== %
+\setbeamercolor{item}{fg=darkred}
+\setbeamertemplate{itemize subitem}{$\circ$}
+\setbeamercolor*{block title}{fg=white, bg=darkred}
+\setbeamercolor*{block body}{bg=lightgray}
+
+%===Set the covered style=== %
+\setbeamercovered{transparent}
+%===Set the bib reference key style=== %
+\setbeamertemplate{bibliography item}[text]
+%===Disable navigation bar=== %
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\usepackage{minted}
+\setminted[python]{bgcolor=bg,fontsize=\scriptsize,linenos}
+\setmintedinline[python]{bgcolor=bg,fontsize=\scriptsize}
+\setminted[xml]{bgcolor=bg,fontsize=\scriptsize,linenos}
+\setmintedinline[xml]{bgcolor=bg,fontsize=\scriptsize}
+
+%\usepackage{filecontents}
+%\begin{filecontents*}{test.py}
+%import rospy
+%    for i in list:
+%        print i
+%\end{filecontents*}
+
+
+%===Logos=== %
+\logo{\includegraphics[height=0.5in]{fig/duckietown_logo}}
+\titlegraphic{ %
+\centering
+\includegraphics[height=1.5in]{fig/duckietown_logo}%\hspace{2ex}
+%\raisebox{-0.75in}{\includegraphics[height=1.5in]{fig/indigoigloo_600.png}}
+} %
+
+\author[Shih-Yuan Liu]{Shih-Yuan Liu}
+\title[ROS in Duckietown]{Robot Operating System (ROS) in Duckietown}
+\institute[Duckietown MIT]{Duckietown, MIT}
+\date[Feb. 16th, 2016]{February 16th 2016}
+
+\begin{document}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\begin{frame}[plain,label=titlepage,noframenumbering] %[plain,noframenumbering] will not show the header and footer
+  \titlepage
+\end{frame}
+
+\begin{frame}[label=overview]{Overview}
+  \tableofcontents
+  %\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+\end{frame}
+
+\begin{frame}{Snippet}
+	\begin{itemize}[<+->]
+		\item Hey
+    \inputminted{python}{snippet/test.py}
+		\item Ho \mintinline{python}{import numpy as np}
+	\end{itemize}
+\end{frame}
+
+
+\end{document}
