@@ -1,0 +1,37 @@
+digraph D {	
+	// Camera
+	node [shape=box,style=filled];
+	subgraph nodes{
+		node [fillcolor=white];
+		//camera_node;
+		//decoder_node;
+		//cam_info_reader_node;
+		line_detector_node;
+		ground_projection_node;
+		lane_filter_node;
+	}
+	node [shape=note,sytle=filled];
+	subgraph files{
+		extrinsic_calibration_file;
+	}
+
+	node [shape=ellipse,style=filled];
+	subgraph topic{
+		node [fillcolor=white];
+		image_compressed[label="image/compressed"];
+		//image_raw[label="image/raw"];
+		camera_info;
+		segment_list;
+		segment_list_projected;
+		lane_pose;
+	}
+	image_compressed->line_detector_node;
+	line_detector_node->segment_list;
+	segment_list->ground_projection_node;
+	extrinsic_calibration_file->ground_projection_node[style="dotted"];
+	camera_info->ground_projection_node;
+	ground_projection_node->segment_list_projected;
+	segment_list_projected->lane_filter_node;
+	lane_filter_node->lane_pose;
+	{rank=same; extrinsic_calibration_file; image_compressed; camera_info}
+}

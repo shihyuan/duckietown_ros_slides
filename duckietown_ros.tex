@@ -1,7 +1,10 @@
+\pdfobjcompresslevel=0
+\pdfminorversion=4
 \documentclass{beamer}
 \usepackage{multimedia}
-
-
+%\usepackage[pdftex]{graphicx}
+%\usepackage{graphviz}
+\usepackage{graphviz}
 %===Pick Theme===
 \usetheme{Warsaw}
 \usecolortheme{beaver}
@@ -22,10 +25,10 @@
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
 \usepackage{minted}
-\setminted[python]{bgcolor=bg,fontsize=\scriptsize,linenos}
+\setminted[python]{bgcolor=bg,fontsize=\scriptsize,linenos,xleftmargin=8pt}
 \setmintedinline[python]{bgcolor=bg,fontsize=\scriptsize}
 \setmintedinline[bash]{bgcolor=bg,fontsize=\scriptsize}
-\setminted[xml]{bgcolor=bg,fontsize=\scriptsize,linenos}
+\setminted[xml]{bgcolor=bg,fontsize=\scriptsize,linenos,xleftmargin=8pt}
 \setmintedinline[xml]{bgcolor=bg,fontsize=\scriptsize}
 \newcommand{\pyinline}[1]{\mintinline{python}{#1}}
 \newcommand{\bashinline}[1]{\mintinline{bash}{#1}}
@@ -37,7 +40,7 @@
 \logo{\includegraphics[height=0.5in]{fig/duckietown_logo}}
 \titlegraphic{ %
 \centering
-\includegraphics[height=1.5in]{fig/duckietown_logo}%\hspace{2ex}
+\includegraphics[height=1.8in]{fig/duckietown_logo}%\hspace{2ex}
 %\raisebox{-0.75in}{\includegraphics[height=1.5in]{fig/indigoigloo_600.png}}
 } %
 
@@ -87,7 +90,7 @@
 			\item Open-source
 			\item Well documented
 			\item \alert{\texttt{python}} for accessibility and \alert{\texttt{C++}} for performance 
-			\item Native to \alert{Ubuntu}
+			\item Native to \alert{Ubuntu}, available to other OS via virtual machines
 			\item Active community with \alert{3000+} packages
 		\end{itemize}
 	\end{column}
@@ -103,16 +106,73 @@
 
 \end{frame}
 
-\section{Concept Overview}
+\section{ROS Concept Overview}
+\begin{frame}[label=overview]{Overview}
+%	\tableofcontents
+	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+\end{frame}
 
-% \subsection{Packages}
+\subsection{Nodes and Topics}
+\begin{frame}{Nodes and Topics}
+	\begin{columns}[c]
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Nodes:
+					\begin{itemize}
+					\item Executables (\texttt{python} or \texttt{C++})
+					\item Each node is a process
+					\item Publishes/Subscribes to Topics
+					\end{itemize}
+				\item Topics:
+					\begin{itemize}
+					\item Passes information between nodes
+					\item Topic type defined by messages
+					\item Support many-to-many communication
+					\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			% \centering
+			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/node_and_topic}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Publisher Node Example}
+	\inputminted{python}{snippet/publisher_node.py}
+\end{frame}
+
+\begin{frame}{Subscriber Node Example}
+	\inputminted{python}{snippet/subscriber_node.py}
+\end{frame}
+
+\begin{frame}{Related Tools and Demo}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item \mintinline{bash}{rosrun}
+				\item \mintinline{bash}{rosnode list}
+				\item \mintinline{bash}{rosnode info}
+				\item \mintinline{bash}{rostopic info}
+				\item \mintinline{bash}{rostopic list}
+				\item \mintinline{bash}{rqt_graph}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			\centering
+			Live demo here.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Packages}
 \begin{frame}{Packages}
 \begin{columns}
 	\begin{column}{0.6\textwidth}
 		\begin{itemize}
-			\item Packages are used to organize:
+			\item Packages are organization tools for:
 			\begin{itemize}
-				\item Modules
+				\item Functionality
 				\item Build and runtime dependencies
 				\item Namespaces
 			\end{itemize}
@@ -137,82 +197,29 @@
 \end{columns}
 \end{frame}
 
-% \subsection{Nodes and Topics}
-\begin{frame}{Nodes and Topics}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Nodes are:
-					\begin{itemize}
-					\item Exectuables
-					\item Each its own process
-					\item Publishes/Subscribes to Topics
-					\end{itemize}
-				\item Topics:
-					\begin{itemize}
-					\item Passes information between nodes
-					\item Topic type defined by messages
-					\item One-to-many/Many-to-one
-					\end{itemize}
-				\item Tools:
-					\begin{itemize}
-					\item \mintinline{bash}{rqt_graph}
-					\item \mintinline{bash}{rosnode list}
-					\item \mintinline{bash}{rosnode info}
-					\item \mintinline{bash}{rostopic info}
-					\item \mintinline{bash}{rostopic list}
-					\end{itemize}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			TODO: Node -> Topic -> Node figure
-			TODO: Demo with Duckiebot joystick.launch.
-		\end{column}
-	\end{columns}
-\end{frame}
-
 \begin{frame}{ROS Master}
-	\begin{columns}
+	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
 			\item Handles communication between nodes
 			\item Connects publisher and subscriber
 			\item Traffic does \alert{not} go through the master once connected
-			\item TCP/IP connection (UDP option available)
+			\item TCP/IP connection
+			\item \bashinline{roscore}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 			\centering
-			TODO: operator picture\\
-			TODO: Connection graph
+			\includegraphics[width=\textwidth]{fig/tele_operator.jpg}
 		\end{column}
 	\end{columns}
+	\only<1>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
+	\only<2>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
+	\only<3>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
+	\only<4>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_4}}
+	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
 \end{frame}
 
-\begin{frame}{Messages}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Define types of Topic
-				\item Basics types: \bashinline{bool}, \bashinline{string}, \bashinline{float}, etc
-				\item \bashinline{Header} contains \bashinline{stamp} and \bashinline{frame_id} and is recommended for every message
-				\item Use composition of existing messages when possible
-					\begin{itemize}
-						\item \bashinline{std_msgs}, \bashinline{geometry_msgs}, \bashinline{sensor_msgs}, \bashinline{nav_msgs}, \bashinline{visualization_msgs}
-					\end{itemize}
-				\item \bashinline{duckietown_msgs} contains all customized messages for Duckietown.
-				\item Tool: \mintinline{bash}{rosmsg show}
-			\end{itemize}
-		\end{column}
-	\begin{column}{0.4\textwidth}
-		\centering
-		TODO: couple of example messages definition (WheelsCmdStamped)
-
-		DEMO: use rosmsg show to show the definition of a couple of msgs
-		\end{column}
-	\end{columns}
-\end{frame}
 
 \begin{frame}{Parameters}
 	\begin{columns}
@@ -279,15 +286,132 @@
 	TODO
 \end{frame}
 
-\section{Duckietown ROS Diagram}
+\section{Best Practices in Duckietown}
+\begin{frame}{Duckietown ROS guidelines}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item TODO
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-\begin{frame}{Duckietown ROS Architecture}
-\begin{itemize}
-	\item TODO:Control
-	\item TODO:Perception
-	\item TODO:Localization
-	\item TODO:Planning and coordination
-\end{itemize}
+\section{ROS Architecture in Duckeitown}
+
+\begin{frame}{Duckietown ROS Diagram}
+TODO: whole diagram. Meant to be overwhelming. Then we break it down into modules
+\end{frame}
+
+
+\begin{frame}{Joystick (Remote Control)}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item \bashinline{joy}
+				\item \bashinline{joy_mapper_node}
+				\item \bashinline{wheels_trimmer_node}
+				\item \bashinline{wheels_driver_node}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\centering \includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/joystick}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Camera (Data Processing)}
+	\begin{columns}
+		\begin{column}{0.42\textwidth}
+			\begin{itemize}
+				\item \bashinline{camera_node}
+				\item \bashinline{decoder_node}
+				\item \bashinline{cam_info_reader_node}
+				\item \bashinline{intrinsic_calibration_file}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\centering
+			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/camera}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lane Filter (Filtering)}
+	\begin{columns}
+		\begin{column}{0.42\textwidth}
+			\begin{itemize}
+				\item \bashinline{line_detector_node}
+				\item \bashinline{ground_projection_node}
+				\item \bashinline{lane_filter_node}
+				\item \bashinline{extrinsic_calibration_file}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\centering
+			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/lane_filter}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lane Control (Vision-Based Control)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			TODO: add figure
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Planning}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Localization}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Coordination}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 % \begin{frame}{Duckietown ROS guidelines}
@@ -295,17 +419,23 @@
 
 \begin{frame}{Resources}
   \begin{columns}
-    \begin{column}{0.6\textwidth}
-      \begin{itemize}
-        \item TODO: links to ROS tutorial and wiki
-      \end{itemize}
-    \end{column}
+	\begin{column}{0.6\textwidth}
+	  \begin{itemize}
+		\item TODO: links to ROS tutorial and wiki
+	  \end{itemize}
+	\end{column}
   \begin{column}{0.4\textwidth}
-    \centering
-    %\includegraphics[width=\textwidth]{}
-    \end{column}
+		\centering
+		%\includegraphics[width=\textwidth]{}
+		% \digraph[scale=0.5]{abc}{a->b->c;}
+	\end{column}
   \end{columns}
 \end{frame}
+
+% \begin{frame}{Duckietown ROS Diagram}
+%	\digraph[scale=0.2]{aaa}{\input{dot/duckietown}}
+	% \includedot[scale=0.8]{dot/test}
+% \end{frame}
 
 %\begin{frame}{Snippet}
 %	\begin{itemize}[<+->]

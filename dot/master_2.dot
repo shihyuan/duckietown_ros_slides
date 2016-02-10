@@ -1,0 +1,1 @@
+digraph master_2 {rankdir=LR; node [shape=box,style=filled,fillcolor=white]; publisher; subscriber; master [shape=diamond]; node [shape=ellipse,style=filled,fillcolor=white]; topic; {rank=same;master;topic} publisher->master[style=dotted,label="register"]; publisher->topic[style=invis] subscriber->master[style=invis,label="query"]; topic->subscriber[style=invis];}

@@ -1,0 +1,29 @@
+digraph D {	
+	node [shape=box,style=filled];
+	subgraph nodes{
+		node [fillcolor=white];
+		joy_node;
+		joy_mapper_node;
+		wheels_trimmer_node;
+		wheels_driver_node;
+	}
+
+	node [shape=note,sytle=filled];
+	subgraph files{
+		motion_calibration_file;
+	}
+
+	node [shape=ellipse,style=""];
+	subgraph topic{
+		joy;
+		wheels_command;
+		wheels_command_trimmed;
+	}
+	joy_node->joy;
+	joy->joy_mapper_node;
+	joy_mapper_node->wheels_command;
+	wheels_command->wheels_trimmer_node;
+	motion_calibration_file->wheels_trimmer_node[style="dotted"];
+	wheels_trimmer_node->wheels_command_trimmed;
+	wheels_command_trimmed->wheels_driver_node;
+}

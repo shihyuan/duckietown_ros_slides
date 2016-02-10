@@ -7,3 +7,5 @@ _minted-duckietown_ros/
 *.toc
 *.log
 duckietown_ros.pdf
+dot/*.pdf
+dot/*.log

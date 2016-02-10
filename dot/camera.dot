@@ -1,0 +1,29 @@
+digraph D {	
+	node [shape=box,style=filled];
+	subgraph nodes{
+		node [fillcolor=white];
+		camera_node;
+		decoder_node;
+		cam_info_reader_node;
+	}
+	
+	node [shape=note,sytle=filled];
+	subgraph files{
+		intrinsic_calibration_file;
+	}
+	
+	node [shape=ellipse,style=""];
+	subgraph topic{
+		node [fillcolor=white];
+		image_compressed[label="image/compressed"];
+		image_raw[label="image/raw"];
+		camera_info;
+	}
+	camera_node->image_compressed;
+	image_compressed->decoder_node;
+	image_compressed->cam_info_reader_node;
+	decoder_node->image_raw;
+	cam_info_reader_node->camera_info;
+	intrinsic_calibration_file->cam_info_reader_node[style="dotted"];
+	//{rank=same; camera_node;decoder_node;cam_info_reader_node};
+}
