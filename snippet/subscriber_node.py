@@ -7,7 +7,7 @@ def callback(msg):
 	rospy.loginfo("I heard: %s" %(msg.data))
 
 # Initialize the node with rospy
-rospy.init_node('subscriber_node', anonymous=False)
+rospy.init_node("subscriber_node")
 # Create subscriber
 subscriber = rospy.Subscriber("topic", String, callback)
 

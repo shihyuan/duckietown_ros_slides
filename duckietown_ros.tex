@@ -26,12 +26,16 @@
 
 \usepackage{minted}
 \setminted[python]{bgcolor=bg,fontsize=\scriptsize,linenos,xleftmargin=8pt}
+\setminted[xml]{bgcolor=bg,fontsize=\scriptsize,linenos,xleftmargin=8pt}
+
 \setmintedinline[python]{bgcolor=bg,fontsize=\scriptsize}
 \setmintedinline[bash]{bgcolor=bg,fontsize=\scriptsize}
-\setminted[xml]{bgcolor=bg,fontsize=\scriptsize,linenos,xleftmargin=8pt}
+\setmintedinline[text]{bgcolor=bg,fontsize=\scriptsize}
 \setmintedinline[xml]{bgcolor=bg,fontsize=\scriptsize}
+
 \newcommand{\pyinline}[1]{\mintinline{python}{#1}}
 \newcommand{\bashinline}[1]{\mintinline{bash}{#1}}
+\newcommand{\inline}[1]{\mintinline{text}{#1}}
 %===Logos=== %
 
 %\usepackage{pgf}
@@ -112,7 +116,7 @@
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
-\subsection{Nodes and Topics}
+\subsection{Nodes, Topics, and ROS Master}
 \begin{frame}{Nodes and Topics}
 	\begin{columns}[c]
 		\begin{column}{0.6\textwidth}
@@ -138,29 +142,148 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Publisher Node Example}
-	\inputminted{python}{snippet/publisher_node.py}
-\end{frame}
-
-\begin{frame}{Subscriber Node Example}
-	\inputminted{python}{snippet/subscriber_node.py}
-\end{frame}
-
-\begin{frame}{Related Tools and Demo}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
+\begin{frame}{ROS Master}
+	\begin{columns}[T]
+		\begin{column}{0.6\textwidth}
 			\begin{itemize}
-				\item \mintinline{bash}{rosrun}
-				\item \mintinline{bash}{rosnode list}
-				\item \mintinline{bash}{rosnode info}
-				\item \mintinline{bash}{rostopic info}
-				\item \mintinline{bash}{rostopic list}
-				\item \mintinline{bash}{rqt_graph}
+			\item Handles communication between nodes
+			\item Connects publisher and subscriber
+			\item Traffic does \alert{not} go through the master once connected
+			\item TCP/IP connection
+			\item Command:
+				\begin{itemize}
+					\item Start a master: \inline{roscore}
+				\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.7\textwidth}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{fig/tele_operator.jpg}
+		\end{column}
+	\end{columns}
+	\only<1>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
+	\only<2>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
+	\only<3>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
+	\only<4>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_4}}
+	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
+\end{frame}
+
+\begin{frame}{Publisher Node Code Example}
+	\framesubtitle{\texttt{publisher\_node.py}}
+	\inputminted{python}{snippet/publisher_node.py}
+	\begin{itemize}
+		\item Initialize a node: \pyinline{rospy.init_node(node_name)}
+		\item Create publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Publisher Node Code Example with Timer}
+	\framesubtitle{\texttt{publisher\_node\_timer.py}}
+	\inputminted{python}{snippet/publisher_node_timer.py}
+	\begin{itemize}
+	\item Timer is more elegant than a while loop
+	\item Start a timer: \pyinline{rospy.Timer(duration,callback)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Subscriber Node Code Example}
+	\framesubtitle{\texttt{subscriber\_node.py}}
+	\inputminted{python}{snippet/subscriber_node.py}
+	\begin{itemize}
+		\item Create a subscriber: \pyinline{rospy.Subscriber(topic_name,callback)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Commandline Tools and Demo}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Start a node:\\\inline{rosrun pkg_name node_exec}
+				\item List all nodes:\\\inline{rosnode list}
+				\item Info of a node:\\\inline{rosnode info node_name}
+				\item List all topics:\\\inline{rostopic list}
+				\item Info of a topic:\\\inline{rostopic info topic_name}
+				\item Listen to a topic:\\\inline{rostopic echo topic_name}
+				\item View communication graph:\\\inline{rqt_graph}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
 			\centering
 			Live demo here.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Messages}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Message defines the type of a topic
+				\item Simple syntax for \texttt{.msg} files:\\%
+					Single value field: \inline{field_type field_name}\\%
+					Fixed-length field: \inline{field_type[n] field_name}\\%
+					Variable-length field: \inline{field_type[] field_name}
+				\item Primitive Type: \inline{string}, \inline{float32}, \inline{int32}, \inline{time}, ...
+				\item Common message packages: \inline{std_msgs}, \inline{geometry_msgs}, \inline{sensor_msgs}, \inline{nav_msgs}, ...
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Message Code Example}
+\framesubtitle{publisher\_node\_msg.py}
+% \inputminted{python}{??}
+\begin{itemize}
+	\item Show message definition: \inline{rosmsg show pkg_name/msg}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Parameters}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Kept on the parameter server (initialized with master)
+				\item Persist until the master is killed
+				\item Can be set/get at run time
+					\begin{itemize}
+						\item Commandline:\\\inline{rosparam set param_name}\\\inline{rosparam get param_name}
+						\item Python:\\\pyinline{rospy.set_param(param_name,param_value)}\\\pyinline{rospy.get_param(param_name,default_value)}
+					\end{itemize}
+				\item Can be load/dump to yaml files:\\\inline{rosparam load file_name [namespace]}\\\inline{rosparam dump file_name [namespace]}
+				\item Great namespace support with \inline{~}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			TODO: yaml file example
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Parameter Code Example}
+	\framesubtitle{\texttt{publisher\_node\_param.py}}
+	\inputminted{python}{snippet/publisher_node_param.py}
+	% \begin{itemize}
+	% 	\item Read parameter from parameter server:\\\pyinline{rospy.get_param(param_name,default_value)}
+	% \end{itemize}
+\end{frame}
+
+\begin{frame}{Commandline Tools and Demo}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item List parameters:\\\inline{rosparam list}
+				\item Get parameter:\\\inline{rosparam get param_name}
+				\item Set parameter:\\\inline{rosparam set param_name}
+				\item Dump parameters into file:\\\inline{rosparam dump file_name [namespace]}
+				\item Read parameters from file:\\\inline{rosparam load file_name [namespace]}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			Demo
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -176,7 +299,7 @@
 				\item Build and runtime dependencies
 				\item Namespaces
 			\end{itemize}
-			\item Key Files
+			\item Key Files (TODO: More details on these three key files?)
 				\begin{itemize}
 					\item CMakeLists.txt
 					\item package.xml
@@ -187,6 +310,7 @@
 					\item \mintinline{bash}{roscd}
 					\item \mintinline{bash}{rospack profile}
 					\item \mintinline{bash}{rospack depends}
+					\item TODO: examples
 				\end{itemize}
 		\end{itemize}
 	\end{column}
@@ -197,53 +321,6 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{ROS Master}
-	\begin{columns}[T]
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-			\item Handles communication between nodes
-			\item Connects publisher and subscriber
-			\item Traffic does \alert{not} go through the master once connected
-			\item TCP/IP connection
-			\item \bashinline{roscore}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{fig/tele_operator.jpg}
-		\end{column}
-	\end{columns}
-	\only<1>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
-	\only<2>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
-	\only<3>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
-	\only<4>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_4}}
-	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
-\end{frame}
-
-
-\begin{frame}{Parameters}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Nodes can set/get parameters to/from the parameter server
-				\item Parameters can be changed during run time
-				\item Parameters can be load/dump to yaml files 
-				\item Provides simple parameterization of nodes
-				\item Tools:
-					\begin{itemize}
-						\item \bashinline{rosparam list}
-						\item \bashinline{rosparam get/set}
-						\item \bashinline{rosparam load/dump}
-					\end{itemize}
-			\end{itemize}
-		\end{column}
-	\begin{column}{0.4\textwidth}
-		\centering
-		TODO: Parameter example of camera.launch and joystick.launch
-		%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
 
 \begin{frame}{Launch Files}
 	\begin{columns}
@@ -257,19 +334,19 @@
 						\item Set/Load parameters
 						\item Remap topics
 						\item Specify machines
-						\item Configuration at launch time through \bashinline{<arg>}
+						\item Configuration at launch time through \inline{<arg>}
 					\end{itemize}
 				\item Tools:
 					\begin{itemize}
-						\item \bashinline{roslaunch --args}
-						\item \bashinline{roslaunch --find}
-						\item \bashinline{roslaunch --ros-args}
+						\item \inline{roslaunch --args}
+						\item \inline{roslaunch --find}
+						\item \inline{roslaunch --ros-args}
 					\end{itemize}
 				\item In Duckietown:
 					\begin{itemize}
 						\item Each node has one elemental launch file
 						\item Documents the I/O of a node
-						\item Standard interfaces through \bashinline{<arg>}
+						\item Standard interfaces through \inline{<arg>}
 					\end{itemize}
 			\end{itemize}
 		\end{column}
@@ -301,7 +378,7 @@
 	\end{columns}
 \end{frame}
 
-\section{ROS Architecture in Duckeitown}
+\section{ROS Architecture in Duckietown}
 
 \begin{frame}{Duckietown ROS Diagram}
 TODO: whole diagram. Meant to be overwhelming. Then we break it down into modules
@@ -312,10 +389,10 @@ TODO: whole diagram. Meant to be overwhelming. Then we break it down into module
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item \bashinline{joy}
-				\item \bashinline{joy_mapper_node}
-				\item \bashinline{wheels_trimmer_node}
-				\item \bashinline{wheels_driver_node}
+				\item \inline{joy}
+				\item \inline{joy_mapper_node}
+				\item \inline{wheels_trimmer_node}
+				\item \inline{wheels_driver_node}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth}
@@ -328,10 +405,10 @@ TODO: whole diagram. Meant to be overwhelming. Then we break it down into module
 	\begin{columns}
 		\begin{column}{0.42\textwidth}
 			\begin{itemize}
-				\item \bashinline{camera_node}
-				\item \bashinline{decoder_node}
-				\item \bashinline{cam_info_reader_node}
-				\item \bashinline{intrinsic_calibration_file}
+				\item \inline{camera_node}
+				\item \inline{decoder_node}
+				\item \inline{cam_info_reader_node}
+				\item \inline{intrinsic_calibration_file}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.58\textwidth}
@@ -345,10 +422,10 @@ TODO: whole diagram. Meant to be overwhelming. Then we break it down into module
 	\begin{columns}
 		\begin{column}{0.42\textwidth}
 			\begin{itemize}
-				\item \bashinline{line_detector_node}
-				\item \bashinline{ground_projection_node}
-				\item \bashinline{lane_filter_node}
-				\item \bashinline{extrinsic_calibration_file}
+				\item \inline{line_detector_node}
+				\item \inline{ground_projection_node}
+				\item \inline{lane_filter_node}
+				\item \inline{extrinsic_calibration_file}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.58\textwidth}
@@ -401,6 +478,20 @@ TODO: whole diagram. Meant to be overwhelming. Then we break it down into module
 \end{frame}
 
 \begin{frame}{Coordination}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{SLAM}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}

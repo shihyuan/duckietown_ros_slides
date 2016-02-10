@@ -1,1 +1,14 @@
-digraph master_5 {rankdir=LR; node [shape=box,style=filled,fillcolor=white]; publisher; subscriber; master [shape=diamond]; node [shape=ellipse,style=filled,fillcolor=white]; topic; {rank=same;master;topic} publisher->master[style=invis,label="register"]; publisher->topic subscriber->master[style=invis,label="query"]; topic->subscriber;}
+digraph {
+	rankdir=LR;
+	node [shape=box,style=filled,fillcolor=white];
+	publisher;
+	subscriber;
+	master [shape=diamond];
+	node [shape=ellipse,style=filled,fillcolor=white];
+	topic;
+	{rank=same;master;topic}
+	publisher->master[style=invis,label="register"];
+	publisher->topic[style="",label="publish"];
+	subscriber->master[style=invis,label="query"];
+	topic->subscriber[style="",label="subscribe"];
+}
