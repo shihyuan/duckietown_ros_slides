@@ -110,13 +110,30 @@
 
 \end{frame}
 
+
+\begin{frame}{Other Robotics Middlewares}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item TODO
+				\item MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
 \section{ROS Concept Overview}
 \begin{frame}[label=overview]{Overview}
 %	\tableofcontents
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
-\subsection{Nodes, Topics, and ROS Master}
+% \subsection{Nodes, Topics, and ROS Master}
 \begin{frame}{Nodes and Topics}
 	\begin{columns}[c]
 		\begin{column}{0.6\textwidth}
@@ -216,35 +233,53 @@
 
 \begin{frame}{Messages}
 	\begin{columns}
-		\begin{column}{0.6\textwidth}
+		\begin{column}{0.7\textwidth}
 			\begin{itemize}
 				\item Message defines the type of a topic
-				\item Simple syntax for \texttt{.msg} files:\\%
+				\item Syntax for \texttt{.msg} files:\\%
 					Single value field: \inline{field_type field_name}\\%
 					Fixed-length field: \inline{field_type[n] field_name}\\%
 					Variable-length field: \inline{field_type[] field_name}
-				\item Primitive Type: \inline{string}, \inline{float32}, \inline{int32}, \inline{time}, ...
-				\item Common message packages: \inline{std_msgs}, \inline{geometry_msgs}, \inline{sensor_msgs}, \inline{nav_msgs}, ...
+				\item Primitive Type: \inline{bool}, \inline{string}, \inline{float32}, \inline{int32}, \inline{time}, ... etc
+				\item Common message packages:
+					\begin{itemize}
+						\item \inline{std_msgs}: 
+						\item \inline{geometry_msgs}:
+						\item \inline{sensor_msgs}:
+					\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.3\textwidth}
 			\centering
 			%\includegraphics[width=\textwidth]{}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Message Code Example}
-\framesubtitle{publisher\_node\_msg.py}
-% \inputminted{python}{??}
-\begin{itemize}
-	\item Show message definition: \inline{rosmsg show pkg_name/msg}
-\end{itemize}
+
+\begin{frame}{Message Definiton Examples}
+	\begin{itemize}
+		\item \texttt{Duckie.msg} defines the name, state, and pose of a duckie.
+		\inputminted{python}{snippet/Duckie.msg}
+		\item \texttt{DuckieList.msg} contains a list of duckies.
+		\inputminted{python}{snippet/DuckieList.msg}
+		\item Look up msg definition:\\\inline{rosmsg show pkg_name/msg_name}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Message Usage in Publisher Code Example}
+	\framesubtitle{publisher\_node\_msg.py}
+	\inputminted{python}{snippet/publisher_node_msg.py}
+\end{frame}
+
+\begin{frame}{Message Usage in Subscriber Code Example}
+	\framesubtitle{subscriber\_node\_msg.py}
+	\inputminted{python}{snippet/subscriber_node_msg.py}
 \end{frame}
 
 \begin{frame}{Parameters}
 	\begin{columns}
-		\begin{column}{0.6\textwidth}
+		\begin{column}{1.0\textwidth}
 			\begin{itemize}
 				\item Kept on the parameter server (initialized with master)
 				\item Persist until the master is killed
@@ -257,9 +292,9 @@
 				\item Great namespace support with \inline{~}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
-			TODO: yaml file example
-		\end{column}
+		% \begin{column}{0.4\textwidth}
+		% 	TODO: yaml file example
+		% \end{column}
 	\end{columns}
 \end{frame}
 
@@ -271,7 +306,8 @@
 	% \end{itemize}
 \end{frame}
 
-\begin{frame}{Commandline Tools and Demo}
+
+\begin{frame}{Commandline Tools and Demo for Parameters}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -283,12 +319,98 @@
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
-			Demo
+			\centering
+      Demo
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\subsection{Packages}
+\begin{frame}{Services}
+	TODO
+\end{frame}
+
+\begin{frame}{Launch File}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item XML format file that can:
+					\begin{itemize}
+						\item Launch nodes and set their names
+						\item Set/Load parameters
+						\item Remap topics
+						\item Include other launch files
+						\item Take and pass arguments from commandline
+					\end{itemize}
+				\item Tags:
+					\begin{itemize}
+						\item \inline{<launch>}
+						\item \inline{<group>}
+						\item \inline{<arg>}
+						\item \inline{<node>}
+						\item \inline{<param>},\inline{<rosparam>}
+						% \item \inline{<machine>}
+						\item \inline{<include>}
+					\end{itemize}
+				% \item In Duckietown:
+				% 	\begin{itemize}
+				% 		\item Each node has one elemental launch file
+				% 		\item Documents the I/O of a node
+				% 		\item Standard interfaces through \inline{<arg>}
+				% 	\end{itemize}
+			\end{itemize}
+		\end{column}
+	\begin{column}{0.4\textwidth}
+		\centering
+		TODO: example using camera.launch and joystick.launch
+		DEMO: command line argument --args --ros-arg --find etc
+		%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Attribute and Elements \texttt{<node>}}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Key attributes:
+					\begin{itemize}
+						\item \inline{pkg} 
+						\item \inline{type} 
+						\item \inline{name} 
+						\item \inline{args} 
+						\item \inline{machine} 
+						\item \inline{ns} 
+						\item \inline{output} 
+					\end{itemize}
+				\item Key elements:
+					\begin{itemize}
+						\item \inline{<remap>}
+						\item \inline{<rosparam>}
+						\item \inline{<param>}
+					\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Launch File Elements}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Packages}
 \begin{columns}
 	\begin{column}{0.6\textwidth}
@@ -321,62 +443,20 @@
 \end{columns}
 \end{frame}
 
-
-\begin{frame}{Launch Files}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item ROS specific scripts as XML
-				\item Capabilities:
-					\begin{itemize}
-						\item Launch nodes
-						\item Set node names
-						\item Set/Load parameters
-						\item Remap topics
-						\item Specify machines
-						\item Configuration at launch time through \inline{<arg>}
-					\end{itemize}
-				\item Tools:
-					\begin{itemize}
-						\item \inline{roslaunch --args}
-						\item \inline{roslaunch --find}
-						\item \inline{roslaunch --ros-args}
-					\end{itemize}
-				\item In Duckietown:
-					\begin{itemize}
-						\item Each node has one elemental launch file
-						\item Documents the I/O of a node
-						\item Standard interfaces through \inline{<arg>}
-					\end{itemize}
-			\end{itemize}
-		\end{column}
-	\begin{column}{0.4\textwidth}
-		\centering
-		TODO: example using camera.launch and joystick.launch
-		DEMO: command line argument --args --ros-arg --find etc
-		%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Services}
-	TODO
-\end{frame}
-
-\section{Best Practices in Duckietown}
-\begin{frame}{Duckietown ROS guidelines}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item TODO
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
+% \section{Best Practices in Duckietown}
+% \begin{frame}{Duckietown ROS guidelines}
+% 	\begin{columns}
+% 		\begin{column}{0.6\textwidth}
+% 			\begin{itemize}
+% 				\item TODO
+% 			\end{itemize}
+% 		\end{column}
+% 		\begin{column}{0.4\textwidth}
+% 			\centering
+% 			%\includegraphics[width=\textwidth]{}
+% 		\end{column}
+% 	\end{columns}
+% \end{frame}
 
 \section{ROS Architecture in Duckietown}
 
