@@ -2,8 +2,11 @@
 \pdfminorversion=4
 \documentclass{beamer}
 \usepackage{multimedia}
-%\usepackage[pdftex]{graphicx}
-%\usepackage{graphviz}
+\usepackage[textsize=tiny]{todonotes}
+\presetkeys%
+{todonotes}%
+{inline}{}
+
 \usepackage{graphviz}
 %===Pick Theme===
 \usetheme{Warsaw}
@@ -72,7 +75,7 @@
 \begin{frame}{Duckiebot Videos}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
-		Shih-yuan - how do I embed \alert{videos} in latex? Probably not right? Output is PDF.
+		Shih-Yuan - how do I embed \alert{videos} in latex? Probably not right? Output is PDF. \todo{See videos slide}
 		\begin{itemize}
 			\item Output line filter?
 			\item Open-loop intersection?
@@ -85,6 +88,20 @@
 	\end{column}
 \end{columns}
 \end{frame}
+
+\begin{frame}{Videos}
+\begin{center}
+  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_1.png}}{videos/lane_following_1.mp4}
+\end{center}
+\end{frame}
+
+\begin{frame}{Videos}
+\begin{center}
+  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_2.png}}{videos/lane_following_2.mp4}
+\end{center}
+\end{frame}
+
+
 
 \begin{frame}{Team Success}
 \begin{columns}
@@ -104,7 +121,7 @@
 \end{frame}
 
 
-\begin{frame}{Why Shih-yaun = glue?}
+\begin{frame}{Why Shih-Yaun = glue?}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 Historical note:
