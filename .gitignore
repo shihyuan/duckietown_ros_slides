@@ -1,4 +1,5 @@
 _minted-duckietown_ros/
+_minted-start_middleware/
 *.aux
 *.nav
 *.out
@@ -7,5 +8,7 @@ _minted-duckietown_ros/
 *.toc
 *.log
 duckietown_ros.pdf
+start_middleware.pdf
 dot/*.pdf
 dot/*.log
+videos/*.mp4
