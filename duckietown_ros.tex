@@ -1,7 +1,13 @@
 \pdfobjcompresslevel=0
 \pdfminorversion=4
-\documentclass{beamer}
+\documentclass[aspectratio=43]{beamer}
 \usepackage{multimedia}
+\usepackage[textsize=tiny]{todonotes}
+\presetkeys%
+{todonotes}%
+{inline}{}
+
+
 %\usepackage[pdftex]{graphicx}
 %\usepackage{graphviz}
 \usepackage{graphviz}
@@ -72,6 +78,7 @@
 \begin{frame}{What is ROS?}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
+		\todo[inline]{ROS is not an OS.}
 		Robotics Operating System (ROS) is an \alert{open-source}, \alert{meta-operating system} for your \alert{robot}:
 		\begin{itemize}
 			\item Hardware abstraction and low-level device control
@@ -133,10 +140,18 @@
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
+\begin{frame}
+	\todo[inline]{Start with video of robots. ROS master? ROSMan}
+	\todo[inline]{Use live camera, show simple ROS diagram (rqt graph) and show frame rate?}
+	\todo[inline]{Three slides on myself}
+\end{frame}
+
 % \subsection{Nodes, Topics, and ROS Master}
 \begin{frame}{Nodes and Topics}
 	\begin{columns}[c]
 		\begin{column}{0.6\textwidth}
+			\todo[inline]{Graph. What is a node? Node/Edge explaination.}
+			\todo[inline]{Topic example with images. command plots etc.}
 			\begin{itemize}
 				\item Nodes:
 					\begin{itemize}
@@ -155,6 +170,8 @@
 		\begin{column}{0.4\textwidth}
 			% \centering
 			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/node_and_topic}
+			\todo[inline]{Add two way communication figure}
+			\todo[inline]{Oval and Square are inversed on the diagram.... Fix this.}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -162,6 +179,7 @@
 \begin{frame}{ROS Master}
 	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
+			\todo[inline]{Transparnet on which machine running which code.}
 			\begin{itemize}
 			\item Handles communication between nodes
 			\item Connects publisher and subscriber
@@ -192,6 +210,9 @@
 		\item Initialize a node: \pyinline{rospy.init_node(node_name)}
 		\item Create publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
 	\end{itemize}
+	\todo[inline]{Explain queue\_size}
+	\todo[inline]{Should use rostopic list, rosnode list before writing own node.}
+	\todo[inline]{Should just use the timer version. Better form, less messy. rospy.spin() not necessary}
 \end{frame}
 
 \begin{frame}{Publisher Node Code Example with Timer}
@@ -227,6 +248,10 @@
 		\begin{column}{0.5\textwidth}
 			\centering
 			Live demo here.
+			\todo[inline]{Terminals are scary}
+			\todo[inline]{Package are not introduced.}
+			\todo[inline]{Use camera and rqt graph as an example}
+			\todo[inline]{rostopic hz}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -265,11 +290,13 @@
 		\inputminted{python}{snippet/DuckieList.msg}
 		\item Look up msg definition:\\\inline{rosmsg show pkg_name/msg_name}
 	\end{itemize}
+	\todo[inline]{Double check consistency}
 \end{frame}
 
 \begin{frame}{Message Usage in Publisher Code Example}
 	\framesubtitle{publisher\_node\_msg.py}
 	\inputminted{python}{snippet/publisher_node_msg.py}
+	\todo[inline]{Use student name}
 \end{frame}
 
 \begin{frame}{Message Usage in Subscriber Code Example}
@@ -291,6 +318,8 @@
 				\item Can be load/dump to yaml files:\\\inline{rosparam load file_name [namespace]}\\\inline{rosparam dump file_name [namespace]}
 				\item Great namespace support with \inline{~}
 			\end{itemize}
+			\todo[inline]{Introduce yaml file. Maybe show an example.}
+			\todo[inline]{Do we need intro to linux terminal?}
 		\end{column}
 		% \begin{column}{0.4\textwidth}
 		% 	TODO: yaml file example
@@ -441,6 +470,7 @@
 		\includegraphics[width=\textwidth]{fig/pkg_tree.png}
 	\end{column}
 \end{columns}
+
 \end{frame}
 
 % \section{Best Practices in Duckietown}
