@@ -73,65 +73,65 @@
 \end{frame}
 
 
-\section{Introduction}
+% \section{Introduction}
 
-\begin{frame}{What is ROS?}
-\begin{columns}
-	\begin{column}{0.55\textwidth}
-		\todo[inline]{ROS is not an OS.}
-		Robotics Operating System (ROS) is an \alert{open-source}, \alert{meta-operating system} for your \alert{robot}:
-		\begin{itemize}
-			\item Hardware abstraction and low-level device control
-			\item Message-passing between processes
-			\item Package and build management system
-			\item Data visualization, logging, and analysis
-		\end{itemize}
-	\end{column}
-	\begin{column}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
-	\end{column}
-\end{columns}
-\end{frame}
+% \begin{frame}{What is ROS?}
+% \begin{columns}
+% 	\begin{column}{0.55\textwidth}
+% 		\todo[inline]{ROS is not an OS.}
+% 		Robotics Operating System (ROS) is an \alert{open-source}, \alert{meta-operating system} for your \alert{robot}:
+% 		\begin{itemize}
+% 			\item Hardware abstraction and low-level device control
+% 			\item Message-passing between processes
+% 			\item Package and build management system
+% 			\item Data visualization, logging, and analysis
+% 		\end{itemize}
+% 	\end{column}
+% 	\begin{column}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+% 	\end{column}
+% \end{columns}
+% \end{frame}
 
-\begin{frame}{Why ROS?}
-\begin{columns}
-	\begin{column}{0.55\textwidth}
-		\begin{itemize}
-			\item Open-source
-			\item Well documented
-			\item \alert{\texttt{python}} for accessibility and \alert{\texttt{C++}} for performance 
-			\item Native to \alert{Ubuntu}, available to other OS via virtual machines
-			\item Active community with \alert{3000+} packages
-		\end{itemize}
-	\end{column}
-	\begin{column}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
-	\end{column}
-\end{columns}
-\onslide<2>{
-\begin{block}{Is there a ROS package for $x$? Can ROS do $y$?}
-	Most likely YES!
-\end{block}}
+% \begin{frame}{Why ROS?}
+% \begin{columns}
+% 	\begin{column}{0.55\textwidth}
+% 		\begin{itemize}
+% 			\item Open-source
+% 			\item Well documented
+% 			\item \alert{\texttt{python}} for accessibility and \alert{\texttt{C++}} for performance 
+% 			\item Native to \alert{Ubuntu}, available to other OS via virtual machines
+% 			\item Active community with \alert{3000+} packages
+% 		\end{itemize}
+% 	\end{column}
+% 	\begin{column}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+% 	\end{column}
+% \end{columns}
+% \onslide<2>{
+% \begin{block}{Is there a ROS package for $x$? Can ROS do $y$?}
+% 	Most likely YES!
+% \end{block}}
 
-\end{frame}
+% \end{frame}
 
 
-\begin{frame}{Other Robotics Middlewares}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item TODO
-				\item MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
+% \begin{frame}{Other Robotics Middlewares}
+% 	\begin{columns}
+% 		\begin{column}{0.6\textwidth}
+% 			\begin{itemize}
+% 				\item TODO
+% 				\item MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
+% 			\end{itemize}
+% 		\end{column}
+% 		\begin{column}{0.4\textwidth}
+% 			\centering
+% 			%\includegraphics[width=\textwidth]{}
+% 		\end{column}
+% 	\end{columns}
+% \end{frame}
 
 
 \section{ROS Concept Overview}
@@ -145,6 +145,38 @@
 	\todo[inline]{Use live camera, show simple ROS diagram (rqt graph) and show frame rate?}
 	\todo[inline]{Three slides on myself}
 \end{frame}
+
+\begin{frame}{Behind the Curtain: Computation Graph}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Sensor
+				\item Actuator
+				\
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Computaiton Graph}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
 
 % \subsection{Nodes, Topics, and ROS Master}
 \begin{frame}{Nodes and Topics}

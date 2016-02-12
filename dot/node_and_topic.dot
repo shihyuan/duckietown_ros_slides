@@ -1,1 +1,10 @@
-digraph node_and_topic {node [shape=box,style=filled,fillcolor=white]; node_a; node_b; node [shape=ellipse,style=filled,fillcolor=white]; topic; node_a->topic[label=" publish"]; topic->node_b[label=" subscribe"]; }
+digraph node_and_topic {
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+	
+	node [shape=ellipse,style=filled,fillcolor=white];
+	node_a; node_b; 
+	node [shape=box,style=filled,fillcolor=white];
+	topic; node_a->topic[label=" publish"];
+	topic->node_b[label=" subscribe"];
+}

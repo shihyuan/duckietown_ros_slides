@@ -1,10 +1,13 @@
 digraph {
 	rankdir=LR;
-	node [shape=box,style=filled,fillcolor=white];
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+	
+	node [shape=ellipse,style=filled,fillcolor=white];
 	publisher;
 	subscriber;
 	master [shape=diamond];
-	node [shape=ellipse,style=filled,fillcolor=white];
+	node [shape=box,style=filled,fillcolor=white];
 	topic;
 	{rank=same;master;topic}
 	publisher->master[style=invis,label="register"];

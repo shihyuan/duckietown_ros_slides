@@ -1,5 +1,8 @@
 digraph D {	
-	node [shape=box,style=filled];
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+	
+	node [shape=ellipse,style=filled];
 	subgraph nodes{
 		node [fillcolor=white];
 		joy_node;
@@ -13,7 +16,7 @@ digraph D {
 		motion_calibration_file;
 	}
 
-	node [shape=ellipse,style=""];
+	node [shape=box,style=""];
 	subgraph topic{
 		joy;
 		wheels_command;

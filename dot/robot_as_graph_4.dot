@@ -1,0 +1,16 @@
+digraph {
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+	
+	node [shape=ellipse,style=filled,fillcolor=white];
+	sensors[label="Camera"];
+	actuators[label="Wheels"];
+	mystery_box[label="Science!",style=filled];
+
+	node [shape=box,fillcolor=white];
+	image[label="Images"];
+
+	sensors->image;
+	image->mystery_box;
+	mystery_box->actuators[style=invis];
+}

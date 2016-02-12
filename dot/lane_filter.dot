@@ -1,6 +1,9 @@
 digraph D {	
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+	
 	// Camera
-	node [shape=box,style=filled];
+	node [shape=ellipse,style=filled];
 	subgraph nodes{
 		node [fillcolor=white];
 		//camera_node;
@@ -15,7 +18,7 @@ digraph D {
 		extrinsic_calibration_file;
 	}
 
-	node [shape=ellipse,style=filled];
+	node [shape=box,style=filled];
 	subgraph topic{
 		node [fillcolor=white];
 		image_compressed[label="image/compressed"];
