@@ -146,13 +146,17 @@
 	\todo[inline]{Three slides on myself}
 \end{frame}
 
-\begin{frame}{Duckiebot Lane Following Demo}
-
+\begin{frame}
+	\todo{Intended Learning Outcome}
 \end{frame}
 
 \begin{frame}{Behind the Curtain}
 	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
+			\todo{Add pictures of camera and wheel}
+			\todo{Graph: Node and edges}
+			\todo{Formal definition of Node, Topic, Publish/Subscribe}
+			\todo{Link to Misha's part: middle ware concepts}
 			\begin{overlayarea}{\textwidth}{\textheight}
 			\centering
 			\only<1>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_1}}%
@@ -170,6 +174,8 @@
 \end{frame}
 
 \begin{frame}{Computation Graph: Lane Following}
+\todo{Decentralized implementation}
+\todo{Modularity}
 \begin{center}
 \includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/lane_following}%
 \end{center}
@@ -179,7 +185,7 @@
 \framesubtitle{Hang Zhao}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-
+			\todo{Graph and zoom in. Add picture.}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/line_detection.png}}{videos/line_detection.mp4}
@@ -191,7 +197,7 @@
 \framesubtitle{Dr. Changhyun Choi}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-
+			\todo{Graph and zoom in. Add picture.}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/ground_projection.png}}{videos/ground_projection.mp4}
@@ -203,7 +209,7 @@
 \framesubtitle{Dr. Liam Paull}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-
+			\todo{Graph and zoom in. Add picture.}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_filter.png}}{videos/lane_filter.mp4}
@@ -215,10 +221,10 @@
 \framesubtitle{Steven Chen}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-
+			\todo{Graph and zoom in. Add picture.}
 		\end{column}
 		\begin{column}{0.4\textwidth}
-		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_control_IO.png}}{videos/lane_control_IO.mp4}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_control.png}}{videos/lane_control.mp4}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -232,6 +238,7 @@
 \begin{frame}{Duckietown Architecture}
 \begin{center}
 	\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/Duckietown_ROS_Diagram}%
+  \todo{Add mini summary of why we need middleware/ROS. How it helped.}
 \end{center}
 
 \end{frame}
@@ -292,6 +299,8 @@
 			\includegraphics[width=\textwidth]{fig/tele_operator.jpg}
 		\end{column}
 	\end{columns}
+  \todo{Consider more specific examples?}
+  \todo{Specify machines}
 	\only<1>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
 	\only<2>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
 	\only<3>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
@@ -302,6 +311,7 @@
 \begin{frame}{Commandline Tools and Demo (Joystick)}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
+      \todo{Add roscore here}
 			\begin{itemize}
 				\item Start a node:\\\inline{rosrun pkg_name node_exec}
 				\item List all nodes:\\\inline{rosnode list}
@@ -340,6 +350,7 @@
 						\item \inline{sensor_msgs}:
 					\end{itemize}
 			\end{itemize}
+      \todo{Too busy}
 		\end{column}
 		\begin{column}{0.3\textwidth}
 			\centering
@@ -349,6 +360,7 @@
 \end{frame}
 
 \begin{frame}{Parameters}
+  \todo{Add intro to parameter server}
 	\begin{columns}
 		\begin{column}{1.0\textwidth}
 			\begin{itemize}
