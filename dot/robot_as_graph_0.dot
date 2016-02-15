@@ -4,9 +4,10 @@ digraph {
 	
 	//Nodes
 	node [shape=ellipse,style=filled,fillcolor=white];
-	sensors[label="Camera"];
-	actuators[label="Wheels"];
-	mystery_node[label="?",style=invis];
+	sensors[label="Sensors"];
+	actuators[label="Actuators"];
+	mystery_node[label="?"];
+
 	sensors_side[shape=plaintext, label="Node"];
 	actuators_side[shape=plaintext, label="Node"];
 	{rank=same;sensors;sensors_side}
@@ -14,8 +15,8 @@ digraph {
 
 	//Topics
 	node [shape=box,fillcolor=white];
-	image[label="Image"];
-	wheels_cmd[label="Wheels Command"];
+	image[label="Sensor Ouput"];
+	wheels_cmd[label="Actuator Command"];
 	image_side[shape=plaintext, label="Topic"];
 	wheels_cmd_side[shape=plaintext, label="Topic"];
 	{rank=same;image;image_side}
@@ -23,7 +24,7 @@ digraph {
 
 	//Edges
 	sensors->image[label="publish"];
-	image->mystery_node[style=invis];
-	mystery_node->wheels_cmd[style=invis];
+	image->mystery_node;
+	mystery_node->wheels_cmd;
 	wheels_cmd->actuators[label="subscribe"];
 }

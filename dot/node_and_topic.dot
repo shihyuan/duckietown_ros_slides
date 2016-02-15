@@ -3,8 +3,12 @@ digraph node_and_topic {
 	node [penwidth=1.5]
 	
 	node [shape=ellipse,style=filled,fillcolor=white];
-	node_a; node_b; 
+	node_a; node_b; node_c; node_d;
 	node [shape=box,style=filled,fillcolor=white];
-	topic; node_a->topic[label=" publish"];
-	topic->node_b[label=" subscribe"];
+	topic;
+
+	node_a->topic[label=" publish"];
+	node_b->topic[label=" publish"];
+	topic->node_c[label=" subscribe"];
+	topic->node_d[label=" subscribe"];
 }

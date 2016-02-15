@@ -1,6 +1,8 @@
 \pdfobjcompresslevel=0
 \pdfminorversion=4
 \documentclass[aspectratio=43]{beamer}
+
+\usepackage{hyperref}
 \usepackage{multimedia}
 \usepackage[textsize=tiny]{todonotes}
 \presetkeys%
@@ -134,68 +136,118 @@
 % \end{frame}
 
 
+\section{Architecture Overview}
+\begin{frame}[label=overview]{Overview}
+%	\tableofcontents
+	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+\end{frame}
+
+\begin{frame}{Meet the Team: Shih-Yuan Liu}
+	\todo[inline]{Three slides on myself}
+\end{frame}
+
+\begin{frame}{Duckiebot Lane Following Demo}
+
+\end{frame}
+
+\begin{frame}{Behind the Curtain}
+	\begin{columns}[T]
+		\begin{column}{0.6\textwidth}
+			\begin{overlayarea}{\textwidth}{\textheight}
+			\centering
+			\only<1>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_1}}%
+			\only<2>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_2}}%
+			\only<3>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_2a}}%
+			\only<4>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_3}}%
+			\only<5>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_4}}%
+			\only<6>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_5}}%
+			\end{overlayarea}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_control_IO.png}}{videos/lane_control_IO.mp4}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Computation Graph: Lane Following}
+\begin{center}
+\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/lane_following}%
+\end{center}
+\end{frame}
+
+\begin{frame}{Line Detection Node}
+\framesubtitle{Hang Zhao}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/line_detection.png}}{videos/line_detection.mp4}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ground Projection Node}
+\framesubtitle{Dr. Changhyun Choi}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/ground_projection.png}}{videos/ground_projection.mp4}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lane Filter Node}
+\framesubtitle{Dr. Liam Paull}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_filter.png}}{videos/lane_filter.mp4}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lane Control Node}
+\framesubtitle{Steven Chen}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_control_IO.png}}{videos/lane_control_IO.mp4}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Putting Them Together}
+	\begin{center}
+	  \movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{videos/lane_following_all.png}}{videos/lane_following_all.mp4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Duckietown Architecture}
+\begin{center}
+	\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/Duckietown_ROS_Diagram}%
+\end{center}
+
+\end{frame}
+
 \section{ROS Concept Overview}
 \begin{frame}[label=overview]{Overview}
 %	\tableofcontents
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
-\begin{frame}
-	\todo[inline]{Start with video of robots. ROS master? ROSMan}
-	\todo[inline]{Use live camera, show simple ROS diagram (rqt graph) and show frame rate?}
-	\todo[inline]{Three slides on myself}
-\end{frame}
 
-\begin{frame}{Duckiebot Lane Following Demo}
-	\todo{Video or live demo of lane following}
-\end{frame}
-
-\begin{frame}{Behind the Curtain}
-	\framesubtitle{How does the Duckiebot do that?}
-	\begin{columns}[T]
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Sensor: Camera
-				\item Actuator: Wheels
-				\item Magic: Algorithms/Funcitons/Processes
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.4\textwidth}
-			\begin{overlayarea}{\textwidth}{\textheight}
-			\centering
-			\only<1>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_1}}%
-			\only<2>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_2}}%
-			\only<3>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_3}}%
-			\only<4>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_4}}%
-			\only<5>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_5}}%
-			\end{overlayarea}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Computaiton Graph}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-
-
-% \subsection{Nodes, Topics, and ROS Master}
 \begin{frame}{Nodes and Topics}
 	\begin{columns}[c]
-		\begin{column}{0.6\textwidth}
-			\todo[inline]{Graph. What is a node? Node/Edge explaination.}
-			\todo[inline]{Topic example with images. command plots etc.}
+		\begin{column}{0.5\textwidth}
+			%\todo[inline]{Graph. What is a node? Node/Edge explaination.}
+			%\todo[inline]{Topic example with images. command plots etc.}
 			\begin{itemize}
 				\item Nodes:
 					\begin{itemize}
@@ -211,11 +263,11 @@
 					\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.5\textwidth}
 			% \centering
-			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/node_and_topic}
-			\todo[inline]{Add two way communication figure}
-			\todo[inline]{Oval and Square are inversed on the diagram.... Fix this.}
+			\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/node_and_topic}
+%			\todo[inline]{Add two way communication figure}
+%			\todo[inline]{Oval and Square are inversed on the diagram.... Fix this.}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -223,7 +275,7 @@
 \begin{frame}{ROS Master}
 	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
-			\todo[inline]{Transparnet on which machine running which code.}
+%			\todo[inline]{Transparnet on which machine running which code.}
 			\begin{itemize}
 			\item Handles communication between nodes
 			\item Connects publisher and subscriber
@@ -247,36 +299,7 @@
 	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
 \end{frame}
 
-\begin{frame}{Publisher Node Code Example}
-	\framesubtitle{\texttt{publisher\_node.py}}
-	\inputminted{python}{snippet/publisher_node.py}
-	\begin{itemize}
-		\item Initialize a node: \pyinline{rospy.init_node(node_name)}
-		\item Create publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
-	\end{itemize}
-	\todo[inline]{Explain queue\_size}
-	\todo[inline]{Should use rostopic list, rosnode list before writing own node.}
-	\todo[inline]{Should just use the timer version. Better form, less messy. rospy.spin() not necessary}
-\end{frame}
-
-\begin{frame}{Publisher Node Code Example with Timer}
-	\framesubtitle{\texttt{publisher\_node\_timer.py}}
-	\inputminted{python}{snippet/publisher_node_timer.py}
-	\begin{itemize}
-	\item Timer is more elegant than a while loop
-	\item Start a timer: \pyinline{rospy.Timer(duration,callback)}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Subscriber Node Code Example}
-	\framesubtitle{\texttt{subscriber\_node.py}}
-	\inputminted{python}{snippet/subscriber_node.py}
-	\begin{itemize}
-		\item Create a subscriber: \pyinline{rospy.Subscriber(topic_name,callback)}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Commandline Tools and Demo}
+\begin{frame}{Commandline Tools and Demo (Joystick)}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -325,29 +348,6 @@
 	\end{columns}
 \end{frame}
 
-
-\begin{frame}{Message Definiton Examples}
-	\begin{itemize}
-		\item \texttt{Duckie.msg} defines the name, state, and pose of a duckie.
-		\inputminted{python}{snippet/Duckie.msg}
-		\item \texttt{DuckieList.msg} contains a list of duckies.
-		\inputminted{python}{snippet/DuckieList.msg}
-		\item Look up msg definition:\\\inline{rosmsg show pkg_name/msg_name}
-	\end{itemize}
-	\todo[inline]{Double check consistency}
-\end{frame}
-
-\begin{frame}{Message Usage in Publisher Code Example}
-	\framesubtitle{publisher\_node\_msg.py}
-	\inputminted{python}{snippet/publisher_node_msg.py}
-	\todo[inline]{Use student name}
-\end{frame}
-
-\begin{frame}{Message Usage in Subscriber Code Example}
-	\framesubtitle{subscriber\_node\_msg.py}
-	\inputminted{python}{snippet/subscriber_node_msg.py}
-\end{frame}
-
 \begin{frame}{Parameters}
 	\begin{columns}
 		\begin{column}{1.0\textwidth}
@@ -371,15 +371,6 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Parameter Code Example}
-	\framesubtitle{\texttt{publisher\_node\_param.py}}
-	\inputminted{python}{snippet/publisher_node_param.py}
-	% \begin{itemize}
-	% 	\item Read parameter from parameter server:\\\pyinline{rospy.get_param(param_name,default_value)}
-	% \end{itemize}
-\end{frame}
-
-
 \begin{frame}{Commandline Tools and Demo for Parameters}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -398,9 +389,9 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Services}
-	TODO
-\end{frame}
+%\begin{frame}{Services}
+%	TODO
+%\end{frame}
 
 \begin{frame}{Launch File}
 	\begin{columns}
@@ -470,16 +461,32 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Launch File Elements}
+%\begin{frame}{Launch File Elements}
+%	\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+%				\item 
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+
+\begin{frame}{Joystick (Remote Control)}
 	\begin{columns}
-		\begin{column}{0.6\textwidth}
+		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item 
+				\item \inline{joy}
+				\item \inline{joy_mapper_node}
+				\item \inline{wheels_trimmer_node}
+				\item \inline{wheels_driver_node}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
+		\begin{column}{0.6\textwidth}
+			\centering \includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/joystick}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -514,153 +521,90 @@
 		\includegraphics[width=\textwidth]{fig/pkg_tree.png}
 	\end{column}
 \end{columns}
-
 \end{frame}
 
-% \section{Best Practices in Duckietown}
-% \begin{frame}{Duckietown ROS guidelines}
+\section{Code Examples}
+\begin{frame}[label=overview]{Overview}
+%	\tableofcontents
+	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+\end{frame}
+% \begin{frame}{Camera (Data Processing)}
 % 	\begin{columns}
-% 		\begin{column}{0.6\textwidth}
+% 		\begin{column}{0.42\textwidth}
 % 			\begin{itemize}
-% 				\item TODO
+% 				\item \inline{camera_node}
+% 				\item \inline{decoder_node}
+% 				\item \inline{cam_info_reader_node}
+% 				\item \inline{intrinsic_calibration_file}
 % 			\end{itemize}
 % 		\end{column}
-% 		\begin{column}{0.4\textwidth}
+% 		\begin{column}{0.58\textwidth}
 % 			\centering
-% 			%\includegraphics[width=\textwidth]{}
+% 			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/camera}
 % 		\end{column}
 % 	\end{columns}
 % \end{frame}
 
-\section{ROS Architecture in Duckietown}
 
-\begin{frame}{Duckietown ROS Diagram}
-TODO: whole diagram. Meant to be overwhelming. Then we break it down into modules
-\end{frame}
-
-
-\begin{frame}{Joystick (Remote Control)}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{itemize}
-				\item \inline{joy}
-				\item \inline{joy_mapper_node}
-				\item \inline{wheels_trimmer_node}
-				\item \inline{wheels_driver_node}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\centering \includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/joystick}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Camera (Data Processing)}
-	\begin{columns}
-		\begin{column}{0.42\textwidth}
-			\begin{itemize}
-				\item \inline{camera_node}
-				\item \inline{decoder_node}
-				\item \inline{cam_info_reader_node}
-				\item \inline{intrinsic_calibration_file}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.58\textwidth}
-			\centering
-			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/camera}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Lane Filter (Filtering)}
-	\begin{columns}
-		\begin{column}{0.42\textwidth}
-			\begin{itemize}
-				\item \inline{line_detector_node}
-				\item \inline{ground_projection_node}
-				\item \inline{lane_filter_node}
-				\item \inline{extrinsic_calibration_file}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.58\textwidth}
-			\centering
-			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/lane_filter}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Lane Control (Vision-Based Control)}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			TODO: add figure
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Planning}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Localization}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Coordination}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{SLAM}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item 
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-% \begin{frame}{Duckietown ROS guidelines}
+% \begin{frame}{Publisher Node Code Example}
+% 	\framesubtitle{\texttt{publisher\_node.py}}
+% 	\inputminted{python}{snippet/publisher_node.py}
+% 	\begin{itemize}
+% 		\item Initialize a node: \pyinline{rospy.init_node(node_name)}
+% 		\item Create publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
+% 	\end{itemize}
+% 	\todo[inline]{Explain queue\_size}
+% 	\todo[inline]{Should use rostopic list, rosnode list before writing own node.}
+% 	\todo[inline]{Should just use the timer version. Better form, less messy. rospy.spin() not necessary}
 % \end{frame}
+
+\begin{frame}{Publisher Node Code Example with Timer}
+	\framesubtitle{\texttt{publisher\_node\_timer.py}}
+	\inputminted{python}{snippet/publisher_node_timer.py}
+	\begin{itemize}
+	\item Timer is more elegant than a while loop
+	\item Start a timer: \pyinline{rospy.Timer(duration,callback)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Subscriber Node Code Example}
+	\framesubtitle{\texttt{subscriber\_node.py}}
+	\inputminted{python}{snippet/subscriber_node.py}
+	\begin{itemize}
+		\item Create a subscriber: \pyinline{rospy.Subscriber(topic_name,callback)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Parameter Code Example}
+	\framesubtitle{\texttt{publisher\_node\_param.py}}
+	\inputminted{python}{snippet/publisher_node_param.py}
+	% \begin{itemize}
+	% 	\item Read parameter from parameter server:\\\pyinline{rospy.get_param(param_name,default_value)}
+	% \end{itemize}
+\end{frame}
+
+\begin{frame}{Message Definition Examples}
+	\begin{itemize}
+		\item \texttt{Duckie.msg} defines the name, state, and pose of a duckie.
+		\inputminted{python}{snippet/Duckie.msg}
+		\item \texttt{DuckieList.msg} contains a list of duckies.
+		\inputminted{python}{snippet/DuckieList.msg}
+		\item Look up msg definition:\\\inline{rosmsg show pkg_name/msg_name}
+	\end{itemize}
+	\todo[inline]{Double check consistency}
+\end{frame}
+
+\begin{frame}{Message Usage in Publisher Code Example}
+	\framesubtitle{publisher\_node\_msg.py}
+	\inputminted{python}{snippet/publisher_node_msg.py}
+	\todo[inline]{Use student name}
+\end{frame}
+
+\begin{frame}{Message Usage in Subscriber Code Example}
+	\framesubtitle{subscriber\_node\_msg.py}
+	\inputminted{python}{snippet/subscriber_node_msg.py}
+\end{frame}
+
 
 \begin{frame}{Resources}
   \begin{columns}

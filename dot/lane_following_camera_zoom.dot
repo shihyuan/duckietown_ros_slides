@@ -6,15 +6,15 @@ digraph D {
 
 	// Nodes
 	node [shape=ellipse,style=filled,fillcolor=white];
-	wheels_driver[label="wheels_drive"];
-	camera_node[label="camera_node"];
-	decoder_node[label="decoder_node"];
-	cam_info_reader_node[label="cam_info_reader_node"];
-	lane_controller[label="lane_controller"];
-	line_detector[label="line_detector"];
-	ground_projection[label="ground_projection"];
-	wheels_trimmer[label="wheels_trimmer"];
-	lane_filter[label="lane_filter"]; 
+	//wheels_driver[label="wheels_drive"];
+	camera_node[label="camera_node",fillcolor=yellow];
+	decoder_node[label="decoder_node",fillcolor=yellow];
+	cam_info_reader_node[label="cam_info_reader_node",fillcolor=yellow];
+	//lane_controller[label="lane_controller"];
+	//line_detector[label="line_detector"];
+	//ground_projection[label="ground_projection"];
+	//wheels_trimmer[label="wheels_trimmer"];
+	//lane_filter[label="lane_filter"]; 
 
 	// Files
 	node [shape=note,style=filled,fillcolor=""];
@@ -24,18 +24,18 @@ digraph D {
 
 	// Topics
 	node [shape=box,style=filled,fillcolor=white];
-	segment_list;
-	segment_list_proj;
-	image_with_lines;
-	lane_control;
-	wheels_command;
-	segment_list;
-	segment_list_proj;
-	lane_pose;
-	image_with_lines;
-	image_compressed[label="camera_node/image/compressed"];
-	image_raw[label="camera_node/image/raw"];
-	camera_info;
+	//segment_list;
+	//segment_list_proj;
+	//image_with_lines;
+	//lane_control;
+	//wheels_command;
+	//segment_list;
+	//segment_list_proj;
+	//lane_pose;
+	//image_with_lines;
+	image_compressed[label="camera_node/image/compressed",fillcolor=yellow];
+	image_raw[label="camera_node/image/raw",fillcolor=yellow];
+	camera_info[fillcolor=yellow];
 
 	//Connection
 	camera_node->image_compressed;

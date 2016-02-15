@@ -2,12 +2,28 @@ digraph {
 	edge [penwidth=1.5]
 	node [penwidth=1.5]
 	
+	//Nodes
 	node [shape=ellipse,style=filled,fillcolor=white];
-	sensors[label="Camera"];
-	actuators[label="Wheels"];
-	node [shape=box,style=invis,fillcolor=white];
-	mystery_box[label="  ?  ",fontsize=60];
+	sensors[label="Sensors"];
+	actuators[label="Actuators"];
+	mystery_node[label="?",style=invis];
+	sensors_side[shape=plaintext, label="Node",style=invis];
+	actuators_side[shape=plaintext, label="Node",style=invis];
+	{rank=same;sensors;sensors_side}
+	{rank=same;actuators;actuators_side}
 
-	sensors->mystery_box[style=invis];
-	mystery_box->actuators[style=invis];
+	//Topics
+	node [shape=box,fillcolor=white];
+	image[label="Sensor Ouput"];
+	wheels_cmd[label="Actuator Command"];
+	image_side[shape=plaintext, label="Topic",style=invis];
+	wheels_cmd_side[shape=plaintext, label="Topic",style=invis];
+	{rank=same;image;image_side}
+	{rank=same;wheels_cmd;wheels_cmd_side}
+
+	//Edges
+	sensors->image[label="publish"];
+	image->mystery_node[style=invis];
+	mystery_node->wheels_cmd[style=invis];
+	wheels_cmd->actuators[label="subscribe"];
 }
