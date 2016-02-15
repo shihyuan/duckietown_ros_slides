@@ -146,18 +146,30 @@
 	\todo[inline]{Three slides on myself}
 \end{frame}
 
-\begin{frame}{Behind the Curtain: Computation Graph}
-	\begin{columns}
+\begin{frame}{Duckiebot Lane Following Demo}
+	\todo{Video or live demo of lane following}
+\end{frame}
+
+\begin{frame}{Behind the Curtain}
+	\framesubtitle{How does the Duckiebot do that?}
+	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
-				\item Sensor
-				\item Actuator
-				\
+				\item Sensor: Camera
+				\item Actuator: Wheels
+				\item Magic: Algorithms/Funcitons/Processes
 			\end{itemize}
 		\end{column}
+
 		\begin{column}{0.4\textwidth}
+			\begin{overlayarea}{\textwidth}{\textheight}
 			\centering
-			
+			\only<1>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_1}}%
+			\only<2>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_2}}%
+			\only<3>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_3}}%
+			\only<4>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_4}}%
+			\only<5>{\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/robot_as_graph_5}}%
+			\end{overlayarea}
 		\end{column}
 	\end{columns}
 \end{frame}
