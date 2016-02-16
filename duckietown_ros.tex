@@ -57,7 +57,7 @@
 } %
 
 % \author[Michael ``Misha'' Novitzky]{Michael ``Misha'' Novitzky}
-\author[S.-Y.Liu, M. Novitzky]{Shih-Yuan Liu, Michael ``Misha'' Novitzky}
+\author[S.-Y.Liu, M. Novitzky]{Shih-Yuan Liu and Michael ``Misha'' Novitzky}
 \title[ROS in Duckietown]{Robot Operating System (ROS) in Duckietown}
 \institute[Duckietown MIT]{Duckietown, MIT}
 \date[Feb. 16th, 2016]{February 16th 2016}
@@ -76,42 +76,43 @@
 
 \section{Introduction to Middlewares in Duckietown}
 
-\begin{frame}{Duckiebot Videos}
-\begin{columns}
-	\begin{column}{0.55\textwidth}
-		Shih-Yuan - how do I embed \alert{videos} in latex? Probably not right? Output is PDF. \todo{See videos slide}
-		\begin{itemize}
-			\item Output line filter?
-			\item Open-loop intersection?
-			\item Lane following awesomeness -- for sure
-		\end{itemize}
-	\end{column}
-	\begin{column}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
-	\end{column}
-\end{columns}
-\end{frame}
+%\begin{frame}{Duckiebot Videos}
+%\begin{columns}
+%	\begin{column}{0.55\textwidth}
+%		Shih-Yuan - how do I embed \alert{videos} in latex? Probably not right? Output is PDF. \todo{See videos slide}
+%		\begin{itemize}
+%			\item Output line filter?
+%			\item Open-loop intersection?
+%			\item Lane following awesomeness -- for sure
+%		\end{itemize}
+%	\end{column}
+%	\begin{column}{0.45\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+%	\end{column}
+%\end{columns}
+%\end{frame}
 
 \begin{frame}{Videos}
 \begin{center}
-  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_1.png}}{videos/lane_following_1.mp4}
+  \todo{Swap in better videos}
+%  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_1.png}}{videos/lane_following_1.mp4}
 \end{center}
 \end{frame}
 
-\begin{frame}{Videos}
-\begin{center}
-  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_2.png}}{videos/lane_following_2.mp4}
-\end{center}
-\end{frame}
+%\begin{frame}{Videos}
+%\begin{center}
+%  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_2.png}}{videos/lane_following_2.mp4}
+%\end{center}
+%\end{frame}
 
 \begin{frame}{Team Success}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 		\begin{itemize}
 			\item No man is an island
-			\item \alert{Shih-yuan} (glue)
-\item Team members: Liam, Andrea, Hang, Misha, etc
+			\item \alert{Shih-Yuan} (glue)
+\item Team members: Liam, Andrea, Hang, Steven, Changhyun etc
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.45\textwidth}
@@ -123,10 +124,10 @@
 \end{frame}
 
 
-\begin{frame}{Why Shih-Yaun = glue?}
+\begin{frame}{Historical Note on Software for Robots}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
-Historical note:
+    \todo{Change figures}
 		\begin{itemize}
 			\item Want to advance state of the art
                         \item How parts talk to each other?
@@ -153,6 +154,9 @@ Thought process:
 
 \section{Middleware}
 \begin{frame}{Enter the Middleware}
+\todo{swap figure for OS, middleware, application}
+\todo{mention the glue}
+\todo{lives on a robot}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 An abstraction:
@@ -182,6 +186,7 @@ We benefit:		\begin{itemize}
 \end{frame}
  
 \begin{frame}{Many Robotics Middlewares}
+  \todo{Make a table}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
@@ -213,38 +218,39 @@ We benefit:		\begin{itemize}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Semantics of Networks}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item best effort
-                                \item guarantees
-                            
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{Semantics of Networks}
+%	\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+%				\item best effort
+%                                \item guarantees
+%                            
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
-\begin{frame}{Realtime}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item ROS - not real time
-                                \item DDS - real time
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{Realtime}
+%	\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+%				\item ROS - not real time
+%                                \item DDS - real time
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 \begin{frame}{Abstractions}
+  \todo{Why do we pick ROS?}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			\begin{itemize}
