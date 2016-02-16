@@ -1,5 +1,5 @@
-\pdfobjcompresslevel=0
-\pdfminorversion=4
+%\pdfobjcompresslevel=0
+%\pdfminorversion=4
 \documentclass[aspectratio=43]{beamer}
 
 \usepackage{hyperref}
@@ -56,8 +56,8 @@
 %\raisebox{-0.75in}{\includegraphics[height=1.5in]{fig/indigoigloo_600.png}}
 } %
 
-
-\author[Shih-Yuan Liu]{Shih-Yuan Liu}
+% \author[Michael ``Misha'' Novitzky]{Michael ``Misha'' Novitzky}
+\author[S.-Y.Liu, M. Novitzky]{Shih-Yuan Liu, Michael ``Misha'' Novitzky}
 \title[ROS in Duckietown]{Robot Operating System (ROS) in Duckietown}
 \institute[Duckietown MIT]{Duckietown, MIT}
 \date[Feb. 16th, 2016]{February 16th 2016}
@@ -74,66 +74,192 @@
 	%\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
+\section{Introduction to Middlewares in Duckietown}
 
-% \section{Introduction}
+\begin{frame}{Duckiebot Videos}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		Shih-Yuan - how do I embed \alert{videos} in latex? Probably not right? Output is PDF. \todo{See videos slide}
+		\begin{itemize}
+			\item Output line filter?
+			\item Open-loop intersection?
+			\item Lane following awesomeness -- for sure
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+	\end{column}
+\end{columns}
+\end{frame}
 
-% \begin{frame}{What is ROS?}
-% \begin{columns}
-% 	\begin{column}{0.55\textwidth}
-% 		\todo[inline]{ROS is not an OS.}
-% 		Robotics Operating System (ROS) is an \alert{open-source}, \alert{meta-operating system} for your \alert{robot}:
-% 		\begin{itemize}
-% 			\item Hardware abstraction and low-level device control
-% 			\item Message-passing between processes
-% 			\item Package and build management system
-% 			\item Data visualization, logging, and analysis
-% 		\end{itemize}
-% 	\end{column}
-% 	\begin{column}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
-% 	\end{column}
-% \end{columns}
-% \end{frame}
+\begin{frame}{Videos}
+\begin{center}
+  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_1.png}}{videos/lane_following_1.mp4}
+\end{center}
+\end{frame}
 
-% \begin{frame}{Why ROS?}
-% \begin{columns}
-% 	\begin{column}{0.55\textwidth}
-% 		\begin{itemize}
-% 			\item Open-source
-% 			\item Well documented
-% 			\item \alert{\texttt{python}} for accessibility and \alert{\texttt{C++}} for performance 
-% 			\item Native to \alert{Ubuntu}, available to other OS via virtual machines
-% 			\item Active community with \alert{3000+} packages
-% 		\end{itemize}
-% 	\end{column}
-% 	\begin{column}{0.45\textwidth}
-% 		\centering
-% 		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
-% 	\end{column}
-% \end{columns}
-% \onslide<2>{
-% \begin{block}{Is there a ROS package for $x$? Can ROS do $y$?}
-% 	Most likely YES!
-% \end{block}}
+\begin{frame}{Videos}
+\begin{center}
+  \movie[showcontrols=true]{\includegraphics[width=0.8\textwidth]{videos/lane_following_2.png}}{videos/lane_following_2.mp4}
+\end{center}
+\end{frame}
 
-% \end{frame}
+\begin{frame}{Team Success}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		\begin{itemize}
+			\item No man is an island
+			\item \alert{Shih-yuan} (glue)
+\item Team members: Liam, Andrea, Hang, Misha, etc
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+	\end{column}
+\end{columns}
+
+\end{frame}
 
 
-% \begin{frame}{Other Robotics Middlewares}
-% 	\begin{columns}
-% 		\begin{column}{0.6\textwidth}
-% 			\begin{itemize}
-% 				\item TODO
-% 				\item MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
-% 			\end{itemize}
-% 		\end{column}
-% 		\begin{column}{0.4\textwidth}
-% 			\centering
-% 			%\includegraphics[width=\textwidth]{}
-% 		\end{column}
-% 	\end{columns}
-% \end{frame}
+\begin{frame}{Why Shih-Yaun = glue?}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+Historical note:
+		\begin{itemize}
+			\item Want to advance state of the art
+                        \item How parts talk to each other?
+                        \item Build infrastructure
+			\item Throw away 
+		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{What problems did they encounter?}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+Thought process:
+		\begin{itemize}
+			\item One giant loop?
+                        \item Many small pieces?
+                        \item Reusable? 
+		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+\end{columns}
+
+\end{frame}
+
+\section{Middleware}
+\begin{frame}{Enter the Middleware}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+An abstraction:
+		\begin{itemize}
+			\item Not the operating system
+                        \item Not the application
+                        \item Right in the middle
+		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}{What do we gain?}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+We benefit:		\begin{itemize}
+			\item Abstraction from hardware
+                        \item Portable
+                        \item Reusable
+                        \item Saves time
+                        \item Saves money
+		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+\end{columns}
+
+\end{frame}
+ 
+\begin{frame}{Many Robotics Middlewares}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
+                                \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{How do they differ?}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item guarantess
+                                \item messages
+                                \item time
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Semantics of Networks}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item best effort
+                                \item guarantees
+                            
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Realtime}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item ROS - not real time
+                                \item DDS - real time
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Abstractions}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Static data flow
+                                \item Publish/subscribe
+                                \item blackboard model
+                                \item centralized / decentralized
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			%\includegraphics[width=\textwidth]{}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 
 \section{Architecture Overview}
