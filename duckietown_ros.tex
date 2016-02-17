@@ -77,7 +77,7 @@
 	%\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
-\section{Introduction to Middlewares in Duckietown}
+\section{Introduction to Middlewares}
 
 %\begin{frame}{Duckiebot Videos}
 %\begin{columns}
@@ -146,7 +146,7 @@
 \end{frame}
 
 
-\begin{frame}{What problems did they encounter?}
+\begin{frame}{What problems in software design?}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 Thought process:
@@ -169,6 +169,7 @@ Thought process:
 %\todo{swap figure for OS, middleware, application}
 %\todo{mention the glue}
 %\todo{lives on a robot}
+General Definition: software that connects software components. A layer that lies between the operating system and the applications on each side of a distributed computer network.
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 An abstraction:
@@ -194,27 +195,49 @@ An abstraction:
 \begin{frame}{What do we gain?}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
-Benefit:		\begin{itemize}
+Every middleware must have:
+		\begin{itemize}
 			\item Abstraction from hardware
                           \item Hide communication
-                            \item Logging/Playback tools
+\end{itemize}
+
+Good middlewares have:
+\begin{itemize}
+  \item Logging/Playback tools
                               \item Real-time analysis
+\end{itemize}
+
+Resulting benefits:
+\begin{itemize}
                         \item Portable
                         \item Reusable
-                        \item Saves time
-                        \item Saves money
+                        \item Saves time and money
 		\end{itemize} 
         \end{column} 
         \begin{column}{0.45\textwidth} 
           \centering 
-          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+          \includegraphics[width=0.6\textwidth]{fig/yay-duckie.jpg} 
         \end{column}
 \end{columns}
 
 \end{frame}
 
 \begin{frame}{Many Robotics Middlewares!}
-ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame
+ \centering 
+          \includegraphics[width=0.3\textwidth]{fig/logo-ros.pdf}  \hspace{2cm}
+\centering 
+          \includegraphics[width=0.1\textwidth]{fig/logo-MOOS.jpg}
+
+\vspace
+
+ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame
+
+\vspace
+
+\centering 
+          \includegraphics[width=0.23\textwidth]{fig/logo-mira.png} \hspace{1.5cm}
+\centering 
+          \includegraphics[width=0.3\textwidth]{fig/logo-openjaus.png}   
 \end{frame}
  
 \begin{frame}{Small Middleware Comparison}
@@ -240,7 +263,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		Data Transport          &  publisher / subscriber, RPC & publisher / subscriber & store / fetch \\ \hline
 		Message Types           &  IDL using PODs  & IDL using PODs &  string, double \\ \hline
 		Supported Languages     &  C++, Java, Python,... & C++ , Java, C\#, Python, ... & C++, Java \\ \hline
-		Supported Platforms     &  Linux, OS X and Win (partial) & Linux, Win, OS X & Linux, OS X \\
+		Supported Platforms     &  Linux, OS X (partial), and Win (partial) & Linux, Win, OS X & Linux, OS X \\
 		\hline
 	\end{tabular}
 %\end{center}
@@ -323,7 +346,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\begin{itemize}
 			\item Communications infrastructure
                           \item Recording and playback of messages
-                          \item Remote prodecure calls
+                          \item Remote procedure calls
                           \item Distributed parameter system
                           \item Huge community
                           \item Sought after skills
@@ -332,7 +355,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
         \end{column} 
         \begin{column}{0.45\textwidth} 
           \centering 
-          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+          \includegraphics[width=0.6\textwidth]{fig/indigoigloo_600.png} 
         \end{column}
 \end{columns}
 
@@ -342,14 +365,13 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 		\begin{itemize}
-			\item Command-line tools
-                          \item rviz
-                          \item rqt
+			\item command-line tools
+                          \item graphical (rviz, rqt)              
 		\end{itemize} 
         \end{column} 
         \begin{column}{0.45\textwidth} 
           \centering 
-          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+          \includegraphics[width=0.6\textwidth]{fig/tools.jpeg} 
         \end{column}
 \end{columns}
 
