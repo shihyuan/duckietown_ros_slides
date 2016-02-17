@@ -214,57 +214,42 @@ Benefit:		\begin{itemize}
 \end{frame}
 
 \begin{frame}{Many Robotics Middlewares!}
-  % \todo{Make a table}
-	%\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-
- %                               \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
-	%		\end{itemize}
-	%	\end{column}
-         %       \begin{column}{0.3\textwidth}
-
-{\Small ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame}
-          %      \end{column}
-
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-	%\end{columns}
+ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame
 \end{frame}
  
 \begin{frame}{Small Middleware Comparison}
-  % \todo{Make a table}
-	%\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-
- %                               \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
-	%		\end{itemize}
-	%	\end{column}
-         %       \begin{column}{0.3\textwidth}
-\resizebox{10cm}{!}{
-                  \begin{tabular}{| l | l | l | l |}
-                    \hline
-                     & ROS & LCM & MOOS \\ \hline
-                    Communication Structure & name-/parameter server & decentralized & central database \\ \hline
-                    Communication Mechanism & intra-process, TCP, UDP  &  UDP multicast & TCP \\ \hline
-                    Data Transport          &  publisher / subscriber, RPC & publisher / subscriber & store / fetch \\ \hline
-                    Message Types           &  IDL using PODs  & IDL using PODs &  string, double \\ \hline
-                    Supported Languages     &  C++, Java, Python,... & C++ , Java, C#, Python, ... & C++, Java \\ \hline
-                    Supported Platforms     &  Linux, OS X and Win (partial) & Linux, Win, OS X & Linux, OS X   \\  \hline  
-                  \end{tabular}
+%%\resizebox{10cm}{!}{
+%\begin{tabular}{|l|l|l|l|}
+%\hline \\
+%  & ROS & LCM & MOOS \\ \hline
+%Communication Structure & name-parameter server & decentralized & central database \\ \hline
+%Communication Mechanism & intra-process, TCP, UDP  &  UDP multicast & TCP \\ \hline
+%Data Transport          &  publisher / subscriber, RPC & publisher / subscriber & store / fetch \\ \hline
+%Message Types           &  IDL using PODs  & IDL using PODs &  string, double \\ \hline
+%Supported Languages     &  C++, Java, Python,... & C++ , Java, C#, Python, ... & C++, Java \\ \hline
+%Supported Platforms     &  Linux, OS X and Win (partial) & Linux, Win, OS X & Linux, OS X
+%\hline  
+%\end{tabular}
+\resizebox{12cm}{!}{
+%\begin{center}
+	\begin{tabular}{ |l|l|l|l| } 
+		\hline
+		& ROS & LCM & MOOS \\ \hline
+		Communication Structure & name-/parameter server & decentralized & central database \\ \hline  
+		Communication Mechanism & intra-process, TCP, UDP  &  UDP multicast & TCP \\ \hline
+		Data Transport          &  publisher / subscriber, RPC & publisher / subscriber & store / fetch \\ \hline
+		Message Types           &  IDL using PODs  & IDL using PODs &  string, double \\ \hline
+		Supported Languages     &  C++, Java, Python,... & C++ , Java, C\#, Python, ... & C++, Java \\ \hline
+		Supported Platforms     &  Linux, OS X and Win (partial) & Linux, Win, OS X & Linux, OS X \\
+		\hline
+	\end{tabular}
+%\end{center}
 }
 
-          %      \end{column}
 
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-	%\end{columns}
 \end{frame}
+
+
 
 
 %\begin{frame}{How do they differ?}
