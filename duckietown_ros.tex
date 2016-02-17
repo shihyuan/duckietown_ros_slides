@@ -74,7 +74,7 @@
 
 \begin{frame}{Intended Learning Outcome}
 	\begin{block}{Learning Objectives}
-		\begin{itemize}[<+->]
+		\begin{itemize}
 			\item Describe the value of middleware for robotics software development
 			\item Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
 			\item Draw computation graph for simple robotic system using publish/subscribe model
@@ -236,21 +236,16 @@ Resulting benefits:
 \end{frame}
 
 \begin{frame}{Many Robotics Middlewares!}
- \centering 
-          \includegraphics[width=0.3\textwidth]{fig/logo-ros.pdf}  \hspace{2cm}
-\centering 
-          \includegraphics[width=0.1\textwidth]{fig/logo-MOOS.jpg}
-
-\vspace
-
+\begin{center}
+\includegraphics[width=0.3\textwidth]{fig/logo-ros.pdf} \hspace{20pt}
+\includegraphics[width=0.1\textwidth]{fig/logo-MOOS.jpg}\\
+\vspace{20pt}
 ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame
+\vspace{20pt}\\
+\includegraphics[width=0.23\textwidth]{fig/logo-mira.png} \hspace{20pt}
+\includegraphics[width=0.3\textwidth]{fig/logo-openjaus.png}
+\end{center}
 
-\vspace
-
-\centering 
-          \includegraphics[width=0.23\textwidth]{fig/logo-mira.png} \hspace{1.5cm}
-\centering 
-          \includegraphics[width=0.3\textwidth]{fig/logo-openjaus.png}   
 \end{frame}
  
 \begin{frame}{Small Middleware Comparison}
@@ -782,7 +777,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item \inline{joy}
+				\item \inline{joy_node}
 				\item \inline{joy_mapper_node}
 				\item \inline{wheels_trimmer_node}
 				\item \inline{wheels_driver_node}
