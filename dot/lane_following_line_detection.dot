@@ -7,10 +7,10 @@ digraph D {
 	// Nodes
 	node [shape=ellipse,style=filled,fillcolor=white];
 	wheels_driver[label="Wheels Driver"];
-	camera_node[label="Camera"];
+	camera_node[label="Camera",fillcolor=green];
 	cam_info_reader_node[label="Camera Info Reader"];
 	lane_controller[label="Lane Controller"];
-	line_detector[label="Line Detector"];
+	line_detector[label="Line Detector",fillcolor=green];
 	ground_projection[label="Ground Projector"];
 	lane_filter[label="Lane Filter"]; 
 
@@ -21,11 +21,11 @@ digraph D {
 
 	// Topics
 	node [shape=box,style=filled,fillcolor=white];
-	segment_list[label="Line Segments"];
+	segment_list[label="Line Segments",fillcolor=green];
 	segment_list_proj[label="Projected Line Segments"];
 	wheels_command[label="Wheels Command"];
 	lane_pose[label="Lane Pose"];
-	image_compressed[label="Image"];
+	image_compressed[label="Image",fillcolor=green];
 	camera_info[label="Camera Info"];
 
 	//Connection

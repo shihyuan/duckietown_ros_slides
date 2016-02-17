@@ -1,0 +1,24 @@
+digraph D {
+	fontname="sans";
+
+	edge [penwidth=1.5,style=invis]
+	node [penwidth=1.5]
+
+	// Nodes
+	node [shape=ellipse,style=invis,fillcolor=white];
+	camera_node[label="Camera",fillcolor=green,style=filled];
+	line_detector[label="Line Detector",fillcolor=green,style=filled];
+
+	// Files
+	node [shape=note,style=filled,fillcolor="",style=invis];
+
+	// Topics
+	node [shape=box,style=filled,fillcolor=white,style=invis];
+	segment_list[label="Line Segments",fillcolor=green,style=filled];
+	image_compressed[label="Image",fillcolor=green,style=filled];
+
+	//Connection
+	camera_node->image_compressed[style=""];
+	image_compressed->line_detector[style=""];
+	line_detector->segment_list[style=""];
+}

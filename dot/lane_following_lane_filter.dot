@@ -12,7 +12,7 @@ digraph D {
 	lane_controller[label="Lane Controller"];
 	line_detector[label="Line Detector"];
 	ground_projection[label="Ground Projector"];
-	lane_filter[label="Lane Filter"]; 
+	lane_filter[label="Lane Filter",fillcolor=green]; 
 
 	// Files
 	node [shape=note,style=filled,fillcolor=""];
@@ -22,9 +22,9 @@ digraph D {
 	// Topics
 	node [shape=box,style=filled,fillcolor=white];
 	segment_list[label="Line Segments"];
-	segment_list_proj[label="Projected Line Segments"];
+	segment_list_proj[label="Projected Line Segments",fillcolor=green];
 	wheels_command[label="Wheels Command"];
-	lane_pose[label="Lane Pose"];
+	lane_pose[label="Lane Pose",fillcolor=green];
 	image_compressed[label="Image"];
 	camera_info[label="Camera Info"];
 

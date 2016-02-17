@@ -4,20 +4,23 @@ digraph {
 	
 	//Nodes
 	node [shape=ellipse,style=filled,fillcolor=white];
-	sensors[label="Camera"];
-	actuators[label="Wheels"];
+	sensors_img[shape=plaintext, label="", image="camera_small.jpg"];
+	actuators_img[shape=plaintext, label="", image="wheels_small.jpg"];
+	sensors[label="Sensors"];
+	actuators[label="Actuators"];
 	mystery_node[label="?",style=invis];
+
 	sensors_side[shape=plaintext, label="Node"];
 	actuators_side[shape=plaintext, label="Node"];
-	{rank=same;sensors;sensors_side}
-	{rank=same;actuators;actuators_side}
+	{rank=same;sensors_img;sensors;sensors_side}
+	{rank=same;actuators_img;actuators;actuators_side}
 
 	//Topics
 	node [shape=box,fillcolor=white];
-	image[label="Image"];
-	wheels_cmd[label="Wheels Command"];
-	image_side[shape=plaintext, label="Topic"];
-	wheels_cmd_side[shape=plaintext, label="Topic"];
+	image[label="Sensor Ouput"];
+	wheels_cmd[label="Actuator Command"];
+	image_side[shape=plaintext, label="Topic",style=invis];
+	wheels_cmd_side[shape=plaintext, label="Topic",style=invis];
 	{rank=same;image;image_side}
 	{rank=same;wheels_cmd;wheels_cmd_side}
 

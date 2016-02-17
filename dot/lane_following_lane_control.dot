@@ -9,7 +9,7 @@ digraph D {
 	wheels_driver[label="Wheels Driver"];
 	camera_node[label="Camera"];
 	cam_info_reader_node[label="Camera Info Reader"];
-	lane_controller[label="Lane Controller"];
+	lane_controller[label="Lane Controller",fillcolor=green];
 	line_detector[label="Line Detector"];
 	ground_projection[label="Ground Projector"];
 	lane_filter[label="Lane Filter"]; 
@@ -23,8 +23,8 @@ digraph D {
 	node [shape=box,style=filled,fillcolor=white];
 	segment_list[label="Line Segments"];
 	segment_list_proj[label="Projected Line Segments"];
-	wheels_command[label="Wheels Command"];
-	lane_pose[label="Lane Pose"];
+	wheels_command[label="Wheels Command",fillcolor=green];
+	lane_pose[label="Lane Pose",fillcolor=green];
 	image_compressed[label="Image"];
 	camera_info[label="Camera Info"];
 

@@ -1,0 +1,19 @@
+digraph D {
+	fontname="sans";
+
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+
+	// Nodes
+	node [shape=ellipse,style=filled,fillcolor=white];
+	lane_controller[label="Lane Controller",fillcolor=green];
+
+	// Topics
+	node [shape=box,style=filled,fillcolor=white];
+	wheels_command[label="Wheels Command",fillcolor=green];
+	lane_pose[label="Lane Pose",fillcolor=green];
+
+	//Connection
+	lane_pose->lane_controller;
+	lane_controller->wheels_command;
+}

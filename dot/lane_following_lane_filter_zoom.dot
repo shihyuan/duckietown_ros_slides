@@ -1,0 +1,19 @@
+digraph D {
+	fontname="sans";
+
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+
+	// Nodes
+	node [shape=ellipse,style=filled,fillcolor=white];
+	lane_filter[label="Lane Filter",fillcolor=green]; 
+
+	// Topics
+	node [shape=box,style=filled,fillcolor=white];
+	segment_list_proj[label="Projected Line Segments",fillcolor=green];
+	lane_pose[label="Lane Pose",fillcolor=green];
+
+	//Connection
+	lane_filter->lane_pose;
+	segment_list_proj->lane_filter;
+}

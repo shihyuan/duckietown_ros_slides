@@ -1,0 +1,26 @@
+digraph D {
+	fontname="sans";
+
+	edge [penwidth=1.5]
+	node [penwidth=1.5]
+
+	// Nodes
+	node [shape=ellipse,style=filled,fillcolor=white];
+	ground_projection[label="Ground Projector",fillcolor=green];
+
+	// Files
+	node [shape=note,style=filled,fillcolor=""];
+	extrinsic_calibration_file[label="Extrinsic Calibration File"];
+
+	// Topics
+	node [shape=box,style=filled,fillcolor=white];
+	segment_list[label="Line Segments",fillcolor=green];
+	segment_list_proj[label="Projected Line Segments",fillcolor=green];
+	camera_info[label="Camera Info",fillcolor=green];
+
+	//Connection
+	extrinsic_calibration_file->ground_projection[style="dotted"];
+	camera_info->ground_projection;
+	segment_list->ground_projection;
+	ground_projection->segment_list_proj;
+}
