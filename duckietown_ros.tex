@@ -363,7 +363,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \end{frame}
 
 \begin{frame}{Meet the Team: Shih-Yuan Liu}
-	\todo[inline]{Three slides on myself}
+	\todo[inline]{One slide about myself}
 \end{frame}
 
 \begin{frame}{Intended Learning Outcome}
@@ -486,6 +486,12 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Behind the Curtain Look of Lane Following}
+	\begin{center}
+		\movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{videos/lane_following_all.png}}{videos/lane_following_all.mp4}
+	\end{center}
+\end{frame}
+
 \begin{frame}{Intended Learning Outcome}
 	\begin{block}{After this lecture, you will be able to:}
 		\begin{itemize}
@@ -530,7 +536,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\begin{column}{0.5\textwidth}
 			%\todo[inline]{Graph. What is a node? Node/Edge explaination.}
 			%\todo[inline]{Topic example with images. command plots etc.}
-			\begin{itemize}
+			\begin{itemize}[<+->]
 				\item Nodes:
 					\begin{itemize}
 					\item Executables (\texttt{python} or \texttt{C++})
@@ -555,14 +561,15 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \end{frame}
 
 \begin{frame}{ROS Master}
+	\framesubtitle{The Telephone Operator}
 	\begin{columns}[T]
 		\begin{column}{0.6\textwidth}
 %			\todo[inline]{Transparnet on which machine running which code.}
 			\begin{itemize}
-			\item Handles communication between nodes
-			\item Connects publisher and subscriber
-			\item Traffic does \alert{not} go through the master once connected
-			\item TCP/IP connection
+			\item<1-> Handles communication between nodes
+			\item<2-> Connects publisher and subscriber through topics
+			\item<3-> Traffic does \alert{not} go through the master once connected
+			\item<4-> TCP/IP connection
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -570,45 +577,66 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 			\includegraphics[width=\textwidth]{fig/tele_operator.jpg}
 		\end{column}
 	\end{columns}
-  \todo{Consider more specific examples?}
-  \todo{Specify machines}
-	\only<1>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
-	\only<2>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
-	\only<3>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
-	\only<4>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_4}}
-	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
+%  \todo{Consider more specific examples?}
+%  \todo{Specify machines}
+	\only<1-4>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_1}}
+	\only<5>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_2}}
+	\only<6>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_3}}
+	\only<7>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_4}}
+	\only<8>{\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/master_5}}
 \end{frame}
 
-\begin{frame}{Commandline Tools and Demo (Joystick)}
+\begin{frame}{Commandline Tools and Demo}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-      \todo{Add roscore here}
 			\begin{itemize}
-				\item Start a node:\\\inline{rosrun pkg_name node_exec}
+				\item Start a ROS Master:\\\inline{roscore}
+				\item Launch a launch file:\\\inline{roslaunch pkg_name launch_file}
+				\item View communication graph:\\\inline{rqt_graph}
 				\item List all nodes:\\\inline{rosnode list}
 				\item Info of a node:\\\inline{rosnode info node_name}
-				\item List all topics:\\\inline{rostopic list}
-				\item Info of a topic:\\\inline{rostopic info topic_name}
-				\item Listen to a topic:\\\inline{rostopic echo topic_name}
-				\item View communication graph:\\\inline{rqt_graph}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\centering
 			Live demo here.
-			\todo[inline]{Terminals are scary}
-			\todo[inline]{Package are not introduced.}
-			\todo[inline]{Use camera and rqt graph as an example}
-			\todo[inline]{rostopic hz}
+%			\todo[inline]{Terminals are scary}
+%			\todo[inline]{Package are not introduced.}
+%			\todo[inline]{Use camera and rqt graph as an example}
+%			\todo[inline]{rostopic hz}
 		\end{column}
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Commandline Tools and Demo}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item List all topics:\\\inline{rostopic list}
+				\item Info of a topic:\\\inline{rostopic info topic_name}
+				\item Listen to a topic:\\\inline{rostopic echo topic_name}
+				\item Check frequency of a topic:\\\inline{rostopic hz topic_name}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			Live demo here.
+			%			\todo[inline]{Terminals are scary}
+			%			\todo[inline]{Package are not introduced.}
+			%			\todo[inline]{Use camera and rqt graph as an example}
+			%			\todo[inline]{rostopic hz}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
 \begin{frame}{Messages}
+	\todo{Add message example}
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
 			\begin{itemize}
 				\item Message defines the type of a topic
+				\item I/O of nodes
 				\item Syntax for \texttt{.msg} files:\\%
 					Single value field: \inline{field_type field_name}\\%
 					Fixed-length field: \inline{field_type[n] field_name}\\%
@@ -620,8 +648,8 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 						\item \inline{geometry_msgs}:
 						\item \inline{sensor_msgs}:
 					\end{itemize}
+				\item Look up definition of a message:\\\inline{rosmsg show pkg_name msg_name}
 			\end{itemize}
-      \todo{Too busy}
 		\end{column}
 		\begin{column}{0.3\textwidth}
 			\centering
@@ -631,26 +659,19 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \end{frame}
 
 \begin{frame}{Parameters}
-  \todo{Add intro to parameter server}
+	\todo{refine}
 	\begin{columns}
 		\begin{column}{1.0\textwidth}
 			\begin{itemize}
-				\item Kept on the parameter server (initialized with master)
-				\item Persist until the master is killed
-				\item Can be set/get at run time
+				\item Parameterization of nodes. ex: Camera resolution, controller gains.
+				\item Kept on the parameter server:
 					\begin{itemize}
-						\item Commandline:\\\inline{rosparam set param_name}\\\inline{rosparam get param_name}
-						\item Python:\\\pyinline{rospy.set_param(param_name,param_value)}\\\pyinline{rospy.get_param(param_name,default_value)}
+						\item Initialized with master
+						\item Parameters persist until master is killed
 					\end{itemize}
-				\item Can be load/dump to yaml files:\\\inline{rosparam load file_name [namespace]}\\\inline{rosparam dump file_name [namespace]}
-				\item Great namespace support with \inline{~}
+				\item Can be set and changed at run time
 			\end{itemize}
-			\todo[inline]{Introduce yaml file. Maybe show an example.}
-			\todo[inline]{Do we need intro to linux terminal?}
 		\end{column}
-		% \begin{column}{0.4\textwidth}
-		% 	TODO: yaml file example
-		% \end{column}
 	\end{columns}
 \end{frame}
 
@@ -667,7 +688,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\centering
-      Demo
+      Live Demo
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -708,8 +729,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\end{column}
 	\begin{column}{0.4\textwidth}
 		\centering
-		TODO: example using camera.launch and joystick.launch
-		DEMO: command line argument --args --ros-arg --find etc
+		\todo{Launch file Example}
 		%\includegraphics[width=\textwidth]{}
 		\end{column}
 	\end{columns}
@@ -717,46 +737,32 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 
 \begin{frame}{Attribute and Elements \texttt{<node>}}
 	\begin{columns}
-		\begin{column}{0.6\textwidth}
+		\begin{column}{0.7\textwidth}
 			\begin{itemize}
 				\item Key attributes:
 					\begin{itemize}
-						\item \inline{pkg} 
-						\item \inline{type} 
-						\item \inline{name} 
-						\item \inline{args} 
-						\item \inline{machine} 
-						\item \inline{ns} 
-						\item \inline{output} 
+						\item \inline{pkg}: Name of package
+						\item \inline{type}: Executable file name
+						\item \inline{name}: Name of the node
+						\item \inline{args}: Commandline arguments for the exec
+						\item \inline{machine}: Machine to run the node
+						\item \inline{ns}: Namespace of the node
+						\item \inline{output}: Outputs of the node
 					\end{itemize}
 				\item Key elements:
 					\begin{itemize}
-						\item \inline{<remap>}
-						\item \inline{<rosparam>}
-						\item \inline{<param>}
+						\item \inline{<remap>}: Remap topics
+						\item \inline{<rosparam>}: Set parameters
+						\item \inline{<param>}: Set parameters
 					\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.3\textwidth}
 			\centering
 			%\includegraphics[width=\textwidth]{}
 		\end{column}
 	\end{columns}
 \end{frame}
-
-%\begin{frame}{Launch File Elements}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-%				\item 
-%			\end{itemize}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
 
 \begin{frame}{Joystick (Remote Control)}
 	\begin{columns}
@@ -774,36 +780,17 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Packages}
-\begin{columns}
-	\begin{column}{0.6\textwidth}
-		\begin{itemize}
-			\item Packages are organization tools for:
-			\begin{itemize}
-				\item Functionality
-				\item Build and runtime dependencies
-				\item Namespaces
-			\end{itemize}
-			\item Key Files (TODO: More details on these three key files?)
-				\begin{itemize}
-					\item CMakeLists.txt
-					\item package.xml
-					\item setup.py
-				\end{itemize}
-			\item Tools
-				\begin{itemize}
-					\item \mintinline{bash}{roscd}
-					\item \mintinline{bash}{rospack profile}
-					\item \mintinline{bash}{rospack depends}
-					\item TODO: examples
-				\end{itemize}
+\begin{frame}{Intended Learning Outcome}
+	\begin{block}{After this lecture, you will be able to:}
+		\begin{itemize}[<+->]
+			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
+			\item<0> Describe the value of middleware for robotics software development
+			\item<1> Explain important ROS concepts such as node, topic, message, and parameters
+			\item<1> Use important ROS command-line tools
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<0> Write a simple ROS node by following code examples
 		\end{itemize}
-	\end{column}
-	\begin{column}{0.4\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{fig/pkg_tree.png}
-	\end{column}
-\end{columns}
+	\end{block}
 \end{frame}
 
 \section{Code Examples}
@@ -840,6 +827,38 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 % 	\todo[inline]{Should use rostopic list, rosnode list before writing own node.}
 % 	\todo[inline]{Should just use the timer version. Better form, less messy. rospy.spin() not necessary}
 % \end{frame}
+
+\begin{frame}{Packages}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Packages are organization tools for:
+				\begin{itemize}
+					\item Functionality
+					\item Build and runtime dependencies
+					\item Namespaces
+				\end{itemize}
+				\item Key Files (TODO: More details on these three key files?)
+				\begin{itemize}
+					\item CMakeLists.txt
+					\item package.xml
+					\item setup.py
+				\end{itemize}
+				\item Tools
+				\begin{itemize}
+					\item \mintinline{bash}{roscd}
+					\item \mintinline{bash}{rospack profile}
+					\item \mintinline{bash}{rospack depends}
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{fig/pkg_tree.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 \begin{frame}{Publisher Node Code Example with Timer}
 	\framesubtitle{\texttt{publisher\_node\_timer.py}}
@@ -880,7 +899,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \begin{frame}{Message Usage in Publisher Code Example}
 	\framesubtitle{publisher\_node\_msg.py}
 	\inputminted{python}{snippet/publisher_node_msg.py}
-	\todo[inline]{Use student name}
+%	\todo[inline]{Use student name}
 \end{frame}
 
 \begin{frame}{Message Usage in Subscriber Code Example}
