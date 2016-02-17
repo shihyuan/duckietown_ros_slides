@@ -242,21 +242,16 @@ Resulting benefits:
 \end{frame}
 
 \begin{frame}{Many Robotics Middlewares!}
- \centering 
-          \includegraphics[width=0.3\textwidth]{fig/logo-ros.pdf}  \hspace{2cm}
-\centering 
-          \includegraphics[width=0.1\textwidth]{fig/logo-MOOS.jpg}
-
-\vspace
-
+\begin{center}
+\includegraphics[width=0.3\textwidth]{fig/logo-ros.pdf} \hspace{20pt}
+\includegraphics[width=0.1\textwidth]{fig/logo-MOOS.jpg}\\
+\vspace{20pt}
 ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame
+\vspace{20pt}\\
+\includegraphics[width=0.23\textwidth]{fig/logo-mira.png} \hspace{20pt}
+\includegraphics[width=0.3\textwidth]{fig/logo-openjaus.png}
+\end{center}
 
-\vspace
-
-\centering 
-          \includegraphics[width=0.23\textwidth]{fig/logo-mira.png} \hspace{1.5cm}
-\centering 
-          \includegraphics[width=0.3\textwidth]{fig/logo-openjaus.png}   
 \end{frame}
  
 \begin{frame}{Small Middleware Comparison}
@@ -356,6 +351,19 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE
 \begin{frame}[label=overview]{Overview}
 %	\tableofcontents
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
+\end{frame}
+
+\begin{frame}{Intended Learning Outcome}
+	\begin{block}{Learning Objectives}
+		\begin{itemize}
+			\item<0> Describe the value of middleware for robotics software development
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<1> Draw computation graph for simple robotic system using publish/subscribe model
+			\item<1> Explain important ROS concepts such as node, topic, message, and parameters
+			\item<1> Use important ROS command-line tools
+			\item<0> Write a simple ROS node by following code examples
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}{Meet the Team: Shih-Yuan Liu}
@@ -788,7 +796,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Mira, OpenRTMaist, ASEBA, MARIE
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item \inline{joy}
+				\item \inline{joy_node}
 				\item \inline{joy_mapper_node}
 				\item \inline{wheels_trimmer_node}
 				\item \inline{wheels_driver_node}
