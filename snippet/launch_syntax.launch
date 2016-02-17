@@ -1,0 +1,5 @@
+<tag attribute1="value1" attribute2="value2">
+	<element_tag_1 attribute3="value3">
+		<!-- Other nesting tags -->
+	</element_tag_1>
+</tag>

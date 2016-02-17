@@ -55,15 +55,15 @@
 \logo{\includegraphics[height=0.5in]{fig/duckietown_logo}}
 \titlegraphic{ %
 \centering
-\includegraphics[height=1.8in]{fig/duckietown_logo}%\hspace{2ex}
+\includegraphics[height=1.6in]{fig/duckietown_logo}%\hspace{2ex}
 %\raisebox{-0.75in}{\includegraphics[height=1.5in]{fig/indigoigloo_600.png}}
 } %
 
 % \author[Michael ``Misha'' Novitzky]{Michael ``Misha'' Novitzky}
 \author[S.-Y.Liu, M. Novitzky]{Shih-Yuan Liu and Michael ``Misha'' Novitzky}
-\title[ROS in Duckietown]{Robot Operating System (ROS) in Duckietown}
+\title[ROS in Duckietown]{Middleware, Software Architecture, and ROS in Duckietown}
 \institute[Duckietown MIT]{Duckietown, MIT}
-\date[Feb. 16th, 2016]{February 16th 2016}
+\date[Feb. 17th, 2016]{February 17th 2016}
 
 \begin{document}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
@@ -72,12 +72,25 @@
 	\titlepage
 \end{frame}
 
+\begin{frame}{Intended Learning Outcome}
+	\begin{block}{Learning Objectives}
+		\begin{itemize}[<+->]
+			\item Describe the value of middleware for robotics software development
+			\item Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item Draw computation graph for simple robotic system using publish/subscribe model
+			\item Explain important ROS concepts such as node, topic, message, and parameters
+			\item Use important ROS command-line tools
+			\item Write a simple ROS node by following code examples
+		\end{itemize}
+	\end{block}
+\end{frame}
+
 \begin{frame}[label=overview]{Overview}
 	\tableofcontents
 	%\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
 
-\section{Introduction to Middlewares in Duckietown}
+\section{Introduction to Middlewares}
 
 %\begin{frame}{Duckiebot Videos}
 %\begin{columns}
@@ -245,77 +258,21 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 	\end{tabular}
 %\end{center}
 }
-
-
 \end{frame}
 
+\begin{frame}{Intended Learning Outcome}
+	\begin{block}{Learning Objectives}
+		\begin{itemize}
+			\item<1> Describe the value of middleware for robotics software development
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
+			\item<0> Explain important ROS concepts such as node, topic, message, and parameters
+			\item<0> Use important ROS command-line tools
+			\item<0> Write a simple ROS node by following code examples
+		\end{itemize}
+	\end{block}
+\end{frame}
 
-
-
-%\begin{frame}{How do they differ?}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-%				\item guarantess
-%                                \item messages
-%                                \item time
-%			\end{itemize}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\begin{frame}{Semantics of Networks}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-%				\item best effort
-%                                \item guarantees
-%                            
-%			\end{itemize}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\begin{frame}{Realtime}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-%				\item ROS - not real time
-%                                \item DDS - real time
-%			\end{itemize}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\begin{frame}{Abstractions}
-%  \todo{Why do we pick ROS?}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{itemize}
-%				\item Static data flow
-%                                \item Publish/subscribe
-%                                \item blackboard model
-%                                \item centralized / decentralized
-%			\end{itemize}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\centering
-%			%\includegraphics[width=\textwidth]{}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
 
 \begin{frame}{Why ROS?}
 \begin{columns}
@@ -323,7 +280,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\begin{itemize}
 			\item Communications infrastructure
                           \item Recording and playback of messages
-                          \item Remote prodecure calls
+                          \item Remote procedure calls
                           \item Distributed parameter system
                           \item Huge community
                           \item Sought after skills
@@ -335,7 +292,6 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
           \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
         \end{column}
 \end{columns}
-
 \end{frame}
 
 \begin{frame}{Which Tools?}
@@ -352,7 +308,19 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
           \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
         \end{column}
 \end{columns}
+\end{frame}
 
+\begin{frame}{Intended Learning Outcome}
+	\begin{block}{Learning Objectives}
+		\begin{itemize}
+			\item<0> Describe the value of middleware for robotics software development
+			\item<1> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
+			\item<0> Explain important ROS concepts such as node, topic, message, and parameters
+			\item<0> Use important ROS command-line tools
+			\item<0> Write a simple ROS node by following code examples
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
@@ -363,23 +331,43 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 \end{frame}
 
 \begin{frame}{Meet the Team: Shih-Yuan Liu}
-	\todo[inline]{One slide about myself}
-\end{frame}
-
-\begin{frame}{Intended Learning Outcome}
-	\begin{block}{After this lecture, you will be able to:}
-	\begin{itemize}[<+->]
-		\item Draw computation graph for simple robotic system using publish/subscribe model
-		\item Describe the value of middleware for robotics software development
-		\item Explain important ROS concepts such as node, topic, message, and parameters
-		\item Use important ROS command-line tools
-		\item Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
-		\item Write a simple ROS node by following code examples
-	\end{itemize}
+	\begin{block}{How to pronounce my name?}<1->
+		sh-U-when
+	\end{block}
+	\begin{block}{Where am I from?}<2->
+		\begin{itemize}
+			\item Taiwan
+			\item U.C. Berkeley
+		\end{itemize}
+	\end{block}
+	\begin{block}{What am I doing here at MIT?}<3->
+		\begin{itemize}
+			\item Postdoc with Prof. Jonathan How (Aerospace Controls Lab)
+			\item Control and Planning for Autonomous Vehicles
+		\end{itemize}
+	\end{block}
+	\begin{block}{What am I doing here in Duckietown?}<4->
+		\begin{itemize}
+			\item ROS Man
+			\item Control
+		\end{itemize}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Behind the Curtain Look of Lane Following}
+%\begin{frame}{Intended Learning Outcome}
+%	\begin{block}{Learning Objectives}
+%	\begin{itemize}[<+->]
+%		\item Draw computation graph for simple robotic system using publish/subscribe model
+%		\item Describe the value of middleware for robotics software development
+%		\item Explain important ROS concepts such as node, topic, message, and parameters
+%		\item Use important ROS command-line tools
+%		\item Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+%		\item Write a simple ROS node by following code examples
+%	\end{itemize}
+%	\end{block}
+%\end{frame}
+
+\begin{frame}{Behind the Curtain Look at Lane Following}
 	\begin{center}
 		\movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{videos/lane_following_all.png}}{videos/lane_following_all.mp4}
 	\end{center}
@@ -486,39 +474,40 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Behind the Curtain Look of Lane Following}
+\begin{frame}{Lane Folloiwng Summary}
 	\begin{center}
 		\movie[showcontrols=false]{\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{videos/lane_following_all.png}}{videos/lane_following_all.mp4}
 	\end{center}
 \end{frame}
 
 \begin{frame}{Intended Learning Outcome}
-	\begin{block}{After this lecture, you will be able to:}
+	\begin{block}{Learning Objectives}
 		\begin{itemize}
-			\item<1> Draw computation graph for simple robotic system using publish/subscribe model
 			\item<0> Describe the value of middleware for robotics software development
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<1> Draw computation graph for simple robotic system using publish/subscribe model
 			\item<0> Explain important ROS concepts such as node, topic, message, and parameters
 			\item<0> Use important ROS command-line tools
-			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
 			\item<0> Write a simple ROS node by following code examples
 		\end{itemize}
 	\end{block}
 \end{frame}
-
-\begin{frame}{Duckietown Architecture}
+ 
+\begin{frame}{Why do we need this?}
+\framesubtitle{Duckietown Architecture}
 \begin{center}
 	\includedot[width=\textwidth,height=0.8\textheight,keepaspectratio]{dot/Duckietown_ROS_Diagram}%
 \end{center}
 \end{frame}
 
 \begin{frame}{Intended Learning Outcome}
-	\begin{block}{After this lecture, you will be able to:}
+	\begin{block}{Learning Objectives}
 		\begin{itemize}
-			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
 			\item<1> Describe the value of middleware for robotics software development
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
 			\item<0> Explain important ROS concepts such as node, topic, message, and parameters
 			\item<0> Use important ROS command-line tools
-			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
 			\item<0> Write a simple ROS node by following code examples
 		\end{itemize}
 	\end{block}
@@ -599,7 +588,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\centering
-			Live demo here.
+			Live demo
 %			\todo[inline]{Terminals are scary}
 %			\todo[inline]{Package are not introduced.}
 %			\todo[inline]{Use camera and rqt graph as an example}
@@ -616,11 +605,13 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 				\item Info of a topic:\\\inline{rostopic info topic_name}
 				\item Listen to a topic:\\\inline{rostopic echo topic_name}
 				\item Check frequency of a topic:\\\inline{rostopic hz topic_name}
+				\item Plot a topic:\\\inline{rqt_plot}
+				\item 3D Visualizer:\\\inline{rviz}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\centering
-			Live demo here.
+			Live demo
 			%			\todo[inline]{Terminals are scary}
 			%			\todo[inline]{Package are not introduced.}
 			%			\todo[inline]{Use camera and rqt graph as an example}
@@ -631,39 +622,59 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 
 
 \begin{frame}{Messages}
-	\todo{Add message example}
 	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\begin{itemize}
-				\item Message defines the type of a topic
-				\item I/O of nodes
-				\item Syntax for \texttt{.msg} files:\\%
-					Single value field: \inline{field_type field_name}\\%
-					Fixed-length field: \inline{field_type[n] field_name}\\%
-					Variable-length field: \inline{field_type[] field_name}
-				\item Primitive Type: \inline{bool}, \inline{string}, \inline{float32}, \inline{int32}, \inline{time}, ... etc
-				\item Common message packages:
-					\begin{itemize}
-						\item \inline{std_msgs}: 
-						\item \inline{geometry_msgs}:
-						\item \inline{sensor_msgs}:
-					\end{itemize}
-				\item Look up definition of a message:\\\inline{rosmsg show pkg_name msg_name}
+		\begin{column}{1.0\textwidth}
+			\begin{itemize}[<+->]
+				\item The content and structure of a topic is defined by a message
+				\item Application Programming Interface (API) for nodes
+				\item Defined in \inline{.msg} files
+				\item Primitive Type: \inline{bool}, \inline{string}, \inline{float32}, \inline{int32}, ... etc
+				\begin{itemize}
+					\item Single value field: \inline{field_type field_name}\\%
+					\item Fixed-length field: \inline{field_type[n] field_name}\\%
+					\item Variable-length field: \inline{field_type[] field_name}
+				\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.3\textwidth}
+%		\begin{column}{0.3\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Commandline Tools and Demo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Look up definition of a message:\\\inline{rosmsg show pkg_name msg_name}
+				\item Common message packages:
+					\begin{itemize}
+						\item \inline{std_msgs}
+						\item \inline{geometry_msgs}
+						\item \inline{sensor_msgs}
+						\item \inline{duckietown_msgs}
+					\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
 			\centering
-			%\includegraphics[width=\textwidth]{}
+			Live Demo
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}{Parameters}
-	\todo{refine}
 	\begin{columns}
 		\begin{column}{1.0\textwidth}
-			\begin{itemize}
-				\item Parameterization of nodes. ex: Camera resolution, controller gains.
+			\begin{itemize}[<+->]
+				\item Publish/Subscribe does not suit everything
+				\item Nodes often requires parameterization
+					\begin{itemize}
+						\item Camera resolution
+						\item Threshold
+						\item Controller gain
+					\end{itemize}
 				\item Kept on the parameter server:
 					\begin{itemize}
 						\item Initialized with master
@@ -698,44 +709,24 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 %\end{frame}
 
 \begin{frame}{Launch File}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
+	\begin{itemize}
+		\item XML format file can specify almost all aspects/actions of ROS
+		\begin{itemize}
+			\item Launch nodes, set/load parameters, remap topics, include other launch files, pass commandline arguments
+		\end{itemize}
+		\item Syntax: \inputminted{xml}{snippet/launch_syntax.launch}
+		\item Tags:
 			\begin{itemize}
-				\item XML format file that can:
-					\begin{itemize}
-						\item Launch nodes and set their names
-						\item Set/Load parameters
-						\item Remap topics
-						\item Include other launch files
-						\item Take and pass arguments from commandline
-					\end{itemize}
-				\item Tags:
-					\begin{itemize}
-						\item \inline{<launch>}
-						\item \inline{<group>}
-						\item \inline{<arg>}
-						\item \inline{<node>}
-						\item \inline{<param>},\inline{<rosparam>}
-						% \item \inline{<machine>}
-						\item \inline{<include>}
-					\end{itemize}
-				% \item In Duckietown:
-				% 	\begin{itemize}
-				% 		\item Each node has one elemental launch file
-				% 		\item Documents the I/O of a node
-				% 		\item Standard interfaces through \inline{<arg>}
-				% 	\end{itemize}
+				\item \inline{<launch>}: Container of launch files.
+				\item \inline{<group>}: Group nodes together.
+				\item \inline{<arg>}: I/O of launch files.
+				\item \inline{<node>}: Run a node.
+				\item \inline{<include>}: Invoke other launch files.
 			\end{itemize}
-		\end{column}
-	\begin{column}{0.4\textwidth}
-		\centering
-		\todo{Launch file Example}
-		%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Attribute and Elements \texttt{<node>}}
+\begin{frame}{Attribute and Elements for \texttt{<node>}}
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
 			\begin{itemize}
@@ -748,6 +739,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 						\item \inline{machine}: Machine to run the node
 						\item \inline{ns}: Namespace of the node
 						\item \inline{output}: Outputs of the node
+						\item \inline{if/unless}: Conditional
 					\end{itemize}
 				\item Key elements:
 					\begin{itemize}
@@ -775,19 +767,25 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth}
-			\centering \includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/joystick}
+			\centering \includedot[width=\textwidth,height=0.85\textheight,keepaspectratio]{dot/joystick}
 		\end{column}
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Joystick.launch}
+	\resizebox{12cm}{!}{
+	\inputminted{xml}{snippet/joystick.launch}
+}
+\end{frame}
+
 \begin{frame}{Intended Learning Outcome}
-	\begin{block}{After this lecture, you will be able to:}
-		\begin{itemize}[<+->]
-			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
+	\begin{block}{Learning Objectives}
+		\begin{itemize}
 			\item<0> Describe the value of middleware for robotics software development
+			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
+			\item<0> Draw computation graph for simple robotic system using publish/subscribe model
 			\item<1> Explain important ROS concepts such as node, topic, message, and parameters
 			\item<1> Use important ROS command-line tools
-			\item<0> Answer the question: ``What is your favorite robotics middleware and why is it ROS?''
 			\item<0> Write a simple ROS node by following code examples
 		\end{itemize}
 	\end{block}
@@ -798,35 +796,6 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 %	\tableofcontents
 	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]
 \end{frame}
-% \begin{frame}{Camera (Data Processing)}
-% 	\begin{columns}
-% 		\begin{column}{0.42\textwidth}
-% 			\begin{itemize}
-% 				\item \inline{camera_node}
-% 				\item \inline{decoder_node}
-% 				\item \inline{cam_info_reader_node}
-% 				\item \inline{intrinsic_calibration_file}
-% 			\end{itemize}
-% 		\end{column}
-% 		\begin{column}{0.58\textwidth}
-% 			\centering
-% 			\includedot[width=\textwidth,height=\textheight,keepaspectratio]{dot/camera}
-% 		\end{column}
-% 	\end{columns}
-% \end{frame}
-
-
-% \begin{frame}{Publisher Node Code Example}
-% 	\framesubtitle{\texttt{publisher\_node.py}}
-% 	\inputminted{python}{snippet/publisher_node.py}
-% 	\begin{itemize}
-% 		\item Initialize a node: \pyinline{rospy.init_node(node_name)}
-% 		\item Create publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
-% 	\end{itemize}
-% 	\todo[inline]{Explain queue\_size}
-% 	\todo[inline]{Should use rostopic list, rosnode list before writing own node.}
-% 	\todo[inline]{Should just use the timer version. Better form, less messy. rospy.spin() not necessary}
-% \end{frame}
 
 \begin{frame}{Packages}
 	\begin{columns}
@@ -838,7 +807,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 					\item Build and runtime dependencies
 					\item Namespaces
 				\end{itemize}
-				\item Key Files (TODO: More details on these three key files?)
+				\item Key Files
 				\begin{itemize}
 					\item CMakeLists.txt
 					\item package.xml
@@ -864,7 +833,7 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 	\framesubtitle{\texttt{publisher\_node\_timer.py}}
 	\inputminted{python}{snippet/publisher_node_timer.py}
 	\begin{itemize}
-	\item Timer is more elegant than a while loop
+	\item Create a publisher: \pyinline{rospy.Publisher(topic_name,msg_type,queue_size)}
 	\item Start a timer: \pyinline{rospy.Timer(duration,callback)}
 	\end{itemize}
 \end{frame}
@@ -893,7 +862,6 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 		\inputminted{python}{snippet/DuckieList.msg}
 		\item Look up msg definition:\\\inline{rosmsg show pkg_name/msg_name}
 	\end{itemize}
-	\todo[inline]{Double check consistency}
 \end{frame}
 
 \begin{frame}{Message Usage in Publisher Code Example}
@@ -909,31 +877,10 @@ ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE
 
 
 \begin{frame}{Resources}
-  \begin{columns}
-	\begin{column}{0.6\textwidth}
-	  \begin{itemize}
-		\item TODO: links to ROS tutorial and wiki
-	  \end{itemize}
-	\end{column}
-  \begin{column}{0.4\textwidth}
-		\centering
-		%\includegraphics[width=\textwidth]{}
-		% \digraph[scale=0.5]{abc}{a->b->c;}
-	\end{column}
-  \end{columns}
+	\begin{center}
+	\inline{http://wiki.ros.org/}\\
+	\includegraphics[width=\textwidth,keepaspectratio]{fig/ros_wiki.png}
+	\end{center}
 \end{frame}
-
-% \begin{frame}{Duckietown ROS Diagram}
-%	\digraph[scale=0.2]{aaa}{\input{dot/duckietown}}
-	% \includedot[scale=0.8]{dot/test}
-% \end{frame}
-
-%\begin{frame}{Snippet}
-%	\begin{itemize}[<+->]
-%		\item Hey
-%		\inputminted{python}{snippet/test.py}
-%		\item Ho \mintinline{python}{import numpy as np}
-%	\end{itemize}
-%\end{frame}
 
 \end{document}
