@@ -6,6 +6,8 @@
 \usepackage{multimedia}
 \usepackage{subfigure}
 \usepackage[textsize=tiny]{todonotes}
+\usepackage{tabu}
+\usepackage{graphicx}
 \presetkeys%
 {todonotes}%
 {inline}{}
@@ -112,12 +114,12 @@
 		\begin{itemize}
 			\item No man is an island
 			\item \alert{Shih-Yuan} (glue)
-\item Team members: Liam, Andrea, Hang, Steven, Changhyun etc
+\item Team members: Liam, Andrea, Hang, Steven, Changhyun, etc
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{fig/indigoigloo_600.png}
+		\includegraphics[width=0.6\textwidth]{fig/liu.jpg}
 	\end{column}
 \end{columns}
 
@@ -127,13 +129,18 @@
 \begin{frame}{Historical Note on Software for Robots}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
-    \todo{Change figures}
+%    \todo{Change figures}
 		\begin{itemize}
 			\item Want to advance state of the art
                         \item How parts talk to each other?
                         \item Build infrastructure
 			\item Throw away 
-		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=\textwidth]{fig/urbanchallenge1.jpg} 
+        \end{column}
 \end{columns}
 
 \end{frame}
@@ -147,16 +154,21 @@ Thought process:
 			\item One giant loop?
                         \item Many small pieces?
                         \item Reusable? 
-		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=0.6\textwidth]{fig/duckie-brain.jpg} 
+        \end{column}
 \end{columns}
 
 \end{frame}
 
-\section{Middleware}
+
 \begin{frame}{Enter the Middleware}
-\todo{swap figure for OS, middleware, application}
-\todo{mention the glue}
-\todo{lives on a robot}
+%\todo{swap figure for OS, middleware, application}
+%\todo{mention the glue}
+%\todo{lives on a robot}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 An abstraction:
@@ -164,7 +176,15 @@ An abstraction:
 			\item Not the operating system
                         \item Not the application
                         \item Right in the middle
-		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=0.4\textwidth]{fig/layers.png} 
+          \centering 
+          \includegraphics[width=0.4\textwidth]{fig/mercedes.jpg} 
+
+        \end{column}
 \end{columns}
 
 \end{frame}
@@ -174,49 +194,94 @@ An abstraction:
 \begin{frame}{What do we gain?}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
-We benefit:		\begin{itemize}
+Benefit:		\begin{itemize}
 			\item Abstraction from hardware
+                          \item Hide communication
+                            \item Logging/Playback tools
+                              \item Real-time analysis
                         \item Portable
                         \item Reusable
                         \item Saves time
                         \item Saves money
-		\end{itemize} \end{column} \begin{column}{0.45\textwidth} \centering \includegraphics[width=\textwidth]{fig/indigoigloo_600.png} \end{column}
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+        \end{column}
 \end{columns}
 
 \end{frame}
+
+\begin{frame}{Many Robotics Middlewares!}
+  % \todo{Make a table}
+	%\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+
+ %                               \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
+	%		\end{itemize}
+	%	\end{column}
+         %       \begin{column}{0.3\textwidth}
+
+{\Small ROS, LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, SmartSoft, ERSP, Webots, RoboFrame}
+          %      \end{column}
+
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+	%\end{columns}
+\end{frame}
  
-\begin{frame}{Many Robotics Middlewares}
-  \todo{Make a table}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item LCM, MOOS, JAUS, Orcos, Pyro, Player, Orca, Miro, OpenRTMaist, ASEBA, MARIE, RSCA, MRDS, OPROS, CLARAty, ROS, SmartSoft, ERSP, Webots, RoboFrame
-                                \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
+\begin{frame}{Small Middleware Comparison}
+  % \todo{Make a table}
+	%\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+
+ %                               \item \alert{Shih-Yuan} how to insert spreadhsheet? Table?
+	%		\end{itemize}
+	%	\end{column}
+         %       \begin{column}{0.3\textwidth}
+\resizebox{10cm}{!}{
+                  \begin{tabular}{| l | l | l | l |}
+                    \hline
+                     & ROS & LCM & MOOS \\ \hline
+                    Communication Structure & name-/parameter server & decentralized & central database \\ \hline
+                    Communication Mechanism & intra-process, TCP, UDP  &  UDP multicast & TCP \\ \hline
+                    Data Transport          &  publisher / subscriber, RPC & publisher / subscriber & store / fetch \\ \hline
+                    Message Types           &  IDL using PODs  & IDL using PODs &  string, double \\ \hline
+                    Supported Languages     &  C++, Java, Python,... & C++ , Java, C#, Python, ... & C++, Java \\ \hline
+                    Supported Platforms     &  Linux, OS X and Win (partial) & Linux, Win, OS X & Linux, OS X   \\  \hline  
+                  \end{tabular}
+}
+
+          %      \end{column}
+
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+	%\end{columns}
 \end{frame}
 
 
-\begin{frame}{How do they differ?}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item guarantess
-                                \item messages
-                                \item time
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{How do they differ?}
+%	\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+%				\item guarantess
+%                                \item messages
+%                                \item time
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 %\begin{frame}{Semantics of Networks}
 %	\begin{columns}
@@ -249,22 +314,60 @@ We benefit:		\begin{itemize}
 %	\end{columns}
 %\end{frame}
 
-\begin{frame}{Abstractions}
-  \todo{Why do we pick ROS?}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Static data flow
-                                \item Publish/subscribe
-                                \item blackboard model
-                                \item centralized / decentralized
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\centering
-			%\includegraphics[width=\textwidth]{}
-		\end{column}
-	\end{columns}
+%\begin{frame}{Abstractions}
+%  \todo{Why do we pick ROS?}
+%	\begin{columns}
+%		\begin{column}{0.6\textwidth}
+%			\begin{itemize}
+%				\item Static data flow
+%                                \item Publish/subscribe
+%                                \item blackboard model
+%                                \item centralized / decentralized
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\centering
+%			%\includegraphics[width=\textwidth]{}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+
+\begin{frame}{Why ROS?}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		\begin{itemize}
+			\item Communications infrastructure
+                          \item Recording and playback of messages
+                          \item Remote prodecure calls
+                          \item Distributed parameter system
+                          \item Huge community
+                          \item Sought after skills
+                          \item Great for prototyping
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+        \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Which Tools?}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		\begin{itemize}
+			\item Command-line tools
+                          \item rviz
+                          \item rqt
+		\end{itemize} 
+        \end{column} 
+        \begin{column}{0.45\textwidth} 
+          \centering 
+          \includegraphics[width=0.5\textwidth]{fig/yay-duckie.jpg} 
+        \end{column}
+\end{columns}
+
 \end{frame}
 
 
